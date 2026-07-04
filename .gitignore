@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.ty_cache/
+*.egg-info/
+build/
+dist/
+
+# ink-scout data (immagini scrapate, cache, DB) — MAI su git (IP / privacy / GDPR)
+data/images/
+data/cache/
+data/*.db
+data/*.db-wal
+data/*.db-shm
+*.sqlite
+*.sqlite3
+
+# segreti / config locale (le API-key stanno in Keychain, non su file)
+.env
+.env.*
+secrets.*
+*.key
+
+# macOS
+.DS_Store
