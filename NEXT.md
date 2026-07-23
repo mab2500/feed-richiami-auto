@@ -1,25 +1,23 @@
 # NEXT — ink-scout
 > Aggiornato: 2026-07-09 · La storia completa vive in docs/2026-07-04-ink-scout-design.md
 
-<!-- BEGIN conoscenza 2026-07-21 -->
+<!-- BEGIN conoscenza 2026-07-23 -->
 ## Conoscenza — quali corsi servono a questo
 
-> Da `atlante domanda` (modello **locale**, costo API zero) e **filtrati**: dei 277 legami
-> proposti sull'intero portafoglio ne sono stati scritti **68**, cioè solo quelli in cui
-> **tutte** le parole del tema compaiono davvero fra i `temi`/`strumenti` delle note di quel
-> corso. Scartati: 101 parziali, 19 deboli e **89 che puntavano a corsi non ancora
-> distillati** — lì il modello aveva giudicato dal titolo, non dal contenuto.
-> Restano **proposte verificate contro il vault**, non un giudizio di Matteo.
+> Da `atlante domanda` (modello **locale**, costo API zero), rigenerato il 2026-07-23.
+> ⚠️ **Proposte** del modello, non confermate: il legame progetto→corso è un giudizio.
 
 | corso | perché (tema in comune) |
 |---|---|
+| `archivio-live` | computer vision |
 | `computer-vision` | computer vision |
 | `hacker-dellia` | computer vision |
 | `video-esclusivi` | computer vision |
 
-Per interrogarli: `uv run atlante ask "<domanda>"` dentro `atlante-ia`, oppure il server MCP
+Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server MCP
 `atlante-ia` (`search`, `get_note`) da qualsiasi progetto — vedi `CLAUDE.md` §8.
-<!-- END conoscenza 2026-07-21 -->
+<!-- END conoscenza 2026-07-23 -->
+
 
 ## Ora (max 3)
 - [x] Scrivere il piano di implementazione (writing-plans) dallo spec approvato — **FATTO 23/07**: `docs/plans/2026-07-23-ink-scout-mvp.md` (23 task TDD, 7 fasi, ~3250 righe; copre tutto lo scope §13; self-review vs spec inclusa)
