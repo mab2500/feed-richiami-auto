@@ -1,0 +1,36 @@
+# Vocabolario stili INIZIALE (dati, non codice). Estendibile senza toccare il sorgente.
+styles:
+  - name: blackwork
+    description: campiture nere piene, forte spazio negativo
+    formal_attributes: {palette: black-only, linework: bold, density: high}
+  - name: fine-line
+    aliases: [fineline, single-needle]
+    description: linee sottili a spessore costante, minimale
+    formal_attributes: {palette: black-only, linework: thin, density: low}
+  - name: geometric
+    description: forme geometriche, simmetria, pattern
+    formal_attributes: {linework: bold, density: medium}
+  - name: dotwork
+    description: ombreggiatura a puntinato (stippling)
+    formal_attributes: {palette: black-only, technique: stippling}
+  - name: traditional
+    aliases: [old-school]
+    description: contorni spessi, colori piatti saturi
+    formal_attributes: {linework: bold, palette: saturated}
+  - name: neo-traditional
+    description: evoluzione del traditional, più dettaglio e palette ampia
+    formal_attributes: {linework: bold, palette: wide}
+  - name: realism
+    description: resa realistica, gradienti morbidi
+    formal_attributes: {linework: soft, palette: grayscale-or-color}
+  - name: minimalist
+    description: pochi elementi, molto bianco, essenziale
+    formal_attributes: {density: low}
+  - name: ornamental
+    aliases: [mandala]
+    description: motivi decorativi, mandala, gioielleria
+    formal_attributes: {density: high, linework: fine}
+  - name: cybersigilism
+    is_emerging: true
+    description: tratti affilati tribali-digitali, spuntoni sottili
+    formal_attributes: {linework: thin-spiky, palette: black-only}
