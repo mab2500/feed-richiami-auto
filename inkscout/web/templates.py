@@ -32,12 +32,18 @@ def image_card(row: dict) -> str:
         else ""
     )
     fav = "★" if row.get("favorite") else "☆"
+    export_btn = (
+        "<form method='post' action='/export'>"
+        f"<input type='hidden' name='id' value='{row['id']}'>"
+        "<button>stencil ⬇</button></form>"
+    )
     return (
         f"<div class='card'><img src='/image/{row['id']}'>"
         f"<div>{attrib}</div>{cta}"
         "<form method='post' action='/favorite'>"
         f"<input type='hidden' name='id' value='{row['id']}'>"
-        f"<button>{fav}</button></form></div>"
+        f"<button>{fav}</button></form>"
+        f"{export_btn}</div>"
     )
 
 

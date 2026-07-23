@@ -59,6 +59,8 @@ class App:
             return self._studio()
         if method == "POST" and path == "/generate":
             return self._generate(params)
+        if method == "POST" and path == "/export":
+            return self._export(params)
         return Response(404, "text/plain; charset=utf-8", "not found")
 
     def _serve_image(self, image_id: str) -> Response:
@@ -127,6 +129,26 @@ class App:
                 "ink-scout — risultato",
                 templates.result_view(result, brief.reference_image_ids),
             ),
+        )
+
+    def _export(self, params: dict) -> Response:
+        # Guardia §11: to_stencil_png ha un default non opzionale per `label`
+        # ("AI-generated / reference only"). Non leggere params.get("label") qui:
+        # la rotta non deve mai poter svuotare o sostituire quella label.
+        from inkscout.export.stencil import to_stencil_png
+
+        row = self.store.get_image(int(params["id"]))
+        if not row:
+            return Response(404, "text/plain; charset=utf-8", "no image")
+        exports = self.images_dir / "exports"
+        exports.mkdir(parents=True, exist_ok=True)
+        src = Path(row["path"]).read_bytes()
+        out = to_stencil_png(src, exports / f"stencil-{row['id']}.png")
+        return Response(
+            200,
+            "image/png",
+            out.read_bytes(),
+            {"Content-Disposition": f"attachment; filename=stencil-{row['id']}.png"},
         )
 
 
