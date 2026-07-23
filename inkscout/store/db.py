@@ -7,6 +7,33 @@ import json
 import sqlite3
 from pathlib import Path
 
+_U64 = 1 << 64
+_I64_MAX = (1 << 63) - 1
+
+
+def _phash_to_sql(value: int | None) -> int | None:
+    """dhash() produce un intero NON firmato a 64 bit; sqlite3 vincola i bind
+    al range firmato ([-2**63, 2**63-1]) e oltre solleva OverflowError.
+    Rimappa preservando il bit-pattern (complemento a due). L'inverso è
+    _phash_from_sql: l'API dello Store parla SEMPRE unsigned, la codifica
+    firmata resta un dettaglio interno della colonna."""
+    if value is None:
+        return None
+    return value - _U64 if value > _I64_MAX else value
+
+
+def _phash_from_sql(value: int | None) -> int | None:
+    if value is None:
+        return None
+    return value & (_U64 - 1)
+
+
+def _row_with_unsigned_phash(row: dict) -> dict:
+    if "phash" in row:
+        row["phash"] = _phash_from_sql(row["phash"])
+    return row
+
+
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS source (
     id INTEGER PRIMARY KEY, kind TEXT NOT NULL, ref TEXT NOT NULL,
@@ -84,7 +111,7 @@ class Store:
             "source_url, license_note, fetched_at) VALUES (?,?,?,?,?,?,?,?,?)",
             (
                 path,
-                phash,
+                _phash_to_sql(phash),
                 width,
                 height,
                 artist_id,
@@ -99,11 +126,11 @@ class Store:
 
     def get_image(self, image_id) -> dict | None:
         row = self.conn.execute("SELECT * FROM image WHERE id=?", (image_id,)).fetchone()
-        return dict(row) if row else None
+        return _row_with_unsigned_phash(dict(row)) if row else None
 
     def all_phashes(self) -> list[tuple[int, int]]:
         return [
-            (r["id"], r["phash"])
+            (r["id"], _phash_from_sql(r["phash"]))
             for r in self.conn.execute("SELECT id, phash FROM image WHERE phash IS NOT NULL")
         ]
 
@@ -145,7 +172,7 @@ class Store:
         if where:
             sql.append("WHERE " + " AND ".join(where))
         sql.append("ORDER BY i.favorite DESC, i.id DESC")
-        return [dict(r) for r in self.conn.execute(" ".join(sql), params)]
+        return [_row_with_unsigned_phash(dict(r)) for r in self.conn.execute(" ".join(sql), params)]
 
     # --- style / tags ---
     def upsert_style(

@@ -60,3 +60,15 @@ def test_all_phashes_for_dedup(tmp_path):
     s.add_image("images/b.jpg", 222, 10, 10, None, src, "u://b", "n", "t")
     pairs = dict(s.all_phashes())
     assert set(pairs.values()) == {111, 222}
+
+
+def test_phash_unsigned_roundtrip_over_int63(tmp_path):
+    # dhash() è unsigned a 64 bit: un valore col bit 63 acceso deve fare
+    # roundtrip identico attraverso la colonna SQLite (firmata internamente).
+    s = _store(tmp_path)
+    src = s.add_source("upload", "local")
+    big = (1 << 64) - 1
+    img = s.add_image("images/c.jpg", big, 10, 10, None, src, "u://c", "n", "t")
+    assert s.get_image(img)["phash"] == big
+    assert dict(s.all_phashes())[img] == big
+    assert s.list_images(include_hidden=True)[0]["phash"] == big
