@@ -22,8 +22,8 @@ Per interrogarli: `uv run atlante ask "<domanda>"` dentro `atlante-ia`, oppure i
 <!-- END conoscenza 2026-07-21 -->
 
 ## Ora (max 3)
-- [ ] Scrivere il piano di implementazione (writing-plans) dallo spec approvato — «Nessun blocco: si può procedere a writing-plans» (spec §15)
-- [ ] Implementare l'MVP v1 secondo lo scope dello spec §13 (ingest upload/siti/IG opt-in, libreria+dedup pHash, ClipTagger, web UI galleria, brief, Modo E + Modo A opt-in, export 300 DPI+SVG, guardie §11, test)
+- [x] Scrivere il piano di implementazione (writing-plans) dallo spec approvato — **FATTO 23/07**: `docs/plans/2026-07-23-ink-scout-mvp.md` (23 task TDD, 7 fasi, ~3250 righe; copre tutto lo scope §13; self-review vs spec inclusa)
+- [ ] Implementare l'MVP v1 eseguendo il piano `docs/plans/2026-07-23-ink-scout-mvp.md` (subagent-driven o executing-plans). Milestone camminante dopo la Fase 4 (upload → libreria → Modo E → export). Debito noto: SVG centerline (`autotrace`) rimandato post-v1, l'MVP usa vtracer.
 
 ## Backlog
 - Post-v1 (spec §13 «Dopo»): Modo B locale GPU, Modo C avanzato (ControlNet/IP-adapter), adapter Pinterest/Tattoodo, refine inpainting + storico versioni ricco, embedding semantico temi su larga scala
