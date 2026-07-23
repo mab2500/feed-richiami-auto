@@ -15,12 +15,18 @@ class Response:
     status: int
     content_type: str
     body: object
+    headers: dict = None  # type: ignore
+
+    def __post_init__(self):
+        if self.headers is None:
+            self.headers = {}
 
 
 class App:
-    def __init__(self, store: Store, images_dir: Path | str):
+    def __init__(self, store: Store, images_dir: Path | str, cfg=None):
         self.store = store
         self.images_dir = Path(images_dir)
+        self.cfg = cfg
 
     def _visible_rows(self, filters: dict) -> list[dict]:
         rows = self.store.list_images(theme=filters.get("theme") or None)
@@ -47,6 +53,12 @@ class App:
             return Response(200, "text/html; charset=utf-8", html)
         if method == "GET" and path.startswith("/image/"):
             return self._serve_image(path.rsplit("/", 1)[-1])
+        if method == "POST" and path in ("/favorite", "/hide"):
+            return self._toggle(path, params)
+        if method == "GET" and path == "/studio":
+            return self._studio()
+        if method == "POST" and path == "/generate":
+            return self._generate(params)
         return Response(404, "text/plain; charset=utf-8", "not found")
 
     def _serve_image(self, image_id: str) -> Response:
@@ -55,6 +67,67 @@ class App:
             return Response(404, "text/plain; charset=utf-8", "no image")
         ctype = mimetypes.guess_type(row["path"])[0] or "image/png"
         return Response(200, ctype, Path(row["path"]).read_bytes())
+
+    def _toggle(self, path: str, params: dict) -> Response:
+        img_id = int(params["id"])
+        if path == "/favorite":
+            row = self.store.get_image(img_id)
+            self.store.set_favorite(img_id, not row["favorite"])
+        else:
+            self.store.set_hidden(img_id, True)
+        return Response(
+            303,
+            "text/html; charset=utf-8",
+            "<meta http-equiv='refresh' content='0;url=/'>",
+            {"Location": "/"},
+        )
+
+    def _studio(self) -> Response:
+        from inkscout.engine import brief_engine  # noqa: F401 — registra Modo E
+        from inkscout.engine.base import available_modes
+
+        styles = [
+            r["name"] for r in self.store.conn.execute("SELECT name FROM style ORDER BY name")
+        ]
+        modes = available_modes() or ["E"]
+        return Response(
+            200,
+            "text/html; charset=utf-8",
+            templates.page("ink-scout — studio", templates.studio_form(modes, styles)),
+        )
+
+    def _generate(self, params: dict) -> Response:
+        from inkscout.engine import brief_engine  # noqa: F401 — registra Modo E
+        from inkscout.engine.base import get_engine
+        from inkscout.ideation.brief import build_brief
+
+        styles = [s.strip() for s in (params.get("styles") or "").split(",") if s.strip()]
+        brief = build_brief(
+            theme_text=params.get("theme", ""),
+            styles=styles,
+            form=params.get("form", ""),
+            store=self.store,
+        )
+        mode = params.get("mode", "E")
+        if mode == "E":
+            engine = get_engine("E", store=self.store)
+        elif mode == "A" and self.cfg is not None:
+            engine = get_engine("A", config=self.cfg)
+        else:
+            return Response(
+                200,
+                "text/html; charset=utf-8",
+                templates.page("ink-scout", f"<p>Modo {mode} non configurato.</p>"),
+            )
+        result = engine.generate(brief)
+        return Response(
+            200,
+            "text/html; charset=utf-8",
+            templates.page(
+                "ink-scout — risultato",
+                templates.result_view(result, brief.reference_image_ids),
+            ),
+        )
 
 
 def serve(  # pragma: no cover
@@ -76,6 +149,8 @@ def serve(  # pragma: no cover
             resp = app.handle(method, u.path, params)
             self.send_response(resp.status)
             self.send_header("Content-Type", resp.content_type)
+            for k, v in resp.headers.items():
+                self.send_header(k, v)
             self.end_headers()
             data = (
                 resp.body if isinstance(resp.body, (bytes, bytearray)) else str(resp.body).encode()
