@@ -32,8 +32,12 @@ def _clip_encode(image, labels):  # pragma: no cover — richiede extra [tag]
     import open_clip
     import torch
 
-    model, _, preprocess = open_clip.create_model_and_transforms("ViT-B-32", pretrained="openai")
-    tokenizer = open_clip.get_tokenizer("ViT-B-32")
+    # "-quickgelu": i pesi 'openai' usano QuickGELU; il config liscio degrada
+    # l'accuratezza in silenzio (UserWarning di open_clip >= 2.24, misurato qui).
+    model, _, preprocess = open_clip.create_model_and_transforms(
+        "ViT-B-32-quickgelu", pretrained="openai"
+    )
+    tokenizer = open_clip.get_tokenizer("ViT-B-32-quickgelu")
     with torch.no_grad():
         img_t = preprocess(image).unsqueeze(0)
         text_t = tokenizer([f"a {lbl} tattoo" for lbl in labels])
