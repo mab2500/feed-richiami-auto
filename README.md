@@ -6,8 +6,27 @@ Dai delle **fonti** (tue immagini, siti personali di tatuatori, o harvest person
 
 ## Stato
 
-🟡 **In design.** Lo spec è approvato; l'implementazione non è ancora iniziata.
-Vedi: [`docs/2026-07-04-ink-scout-design.md`](docs/2026-07-04-ink-scout-design.md).
+🟢 **Flusso MVP offline implementato e verificato end-to-end** (upload → libreria → tag → brief → Modo E → export stencil → web UI in-process, senza rete — vedi `tests/test_integration.py`). CLIP, export SVG, fallback CDP e Modo A (fal.ai) restano dietro extra opzionali.
+Vedi: [`docs/2026-07-04-ink-scout-design.md`](docs/2026-07-04-ink-scout-design.md) per lo spec completo.
+
+## Quickstart (MVP offline)
+
+```bash
+uv sync
+uv run ink-scout sync-styles                          # popola il vocabolario stili
+uv run ink-scout ingest --kind upload --ref ./le-mie-immagini
+uv run ink-scout serve                                # http://127.0.0.1:8765
+```
+
+- **Modo E (default):** offline, nessuna chiave — produce brief + moodboard + prompt pronto.
+- **Modo A (opt-in):** salva la key fal.ai nel Keychain e imposta il model-id:
+  ```bash
+  security add-generic-password -a inkscout-fal-key -s ink-scout -w
+  export INK_SCOUT_FAL_MODEL_ID=fal-ai/flux/schnell
+  ```
+- **Extra pesanti opzionali:** `uv pip install -e ".[tag]"` (CLIP), `".[export]"` (SVG vtracer), `".[cdp]"` (fallback browser).
+
+Ogni output è marcato **"AI-generated / reference only"**: ink-scout serve a preparare un reference da portare a un tatuatore umano.
 
 ## Idee portanti
 
