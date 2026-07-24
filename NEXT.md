@@ -1,5 +1,5 @@
 # NEXT — ink-scout
-> Aggiornato: 2026-07-09 · La storia completa vive in docs/2026-07-04-ink-scout-design.md
+> Aggiornato: 2026-07-24 · La storia completa vive in docs/2026-07-04-ink-scout-design.md
 
 <!-- BEGIN conoscenza 2026-07-23 -->
 ## Conoscenza — quali corsi servono a questo
@@ -20,14 +20,23 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
 
 
 ## Ora (max 3)
-- [x] Scrivere il piano di implementazione (writing-plans) dallo spec approvato — **FATTO 23/07**: `docs/plans/2026-07-23-ink-scout-mvp.md` (23 task TDD, 7 fasi, ~3250 righe; copre tutto lo scope §13; self-review vs spec inclusa)
-- [ ] Implementare l'MVP v1 eseguendo il piano `docs/plans/2026-07-23-ink-scout-mvp.md` (subagent-driven o executing-plans). Milestone camminante dopo la Fase 4 (upload → libreria → Modo E → export). Debito noto: SVG centerline (`autotrace`) rimandato post-v1, l'MVP usa vtracer.
+- [x] ~~Implementare l'MVP v1 eseguendo il piano~~ — **FATTO 24/07, 23/23 task**: pipeline subagent-driven (ondate di 2-3 Sonnet in parallelo, review Fable tra le ondate), 78 test + 1 skip (vtracer), ruff pulito, 27 commit. Milestone camminante verificata dal vivo (upload→libreria con dedup reale→Modo E→stencil 300 DPI) + test integrazione e2e offline. Guardie §11 testate a livello di pixel/HTML. Debito noto invariato: SVG centerline (`autotrace`) post-v1, l'MVP usa vtracer.
+- [ ] **Provarlo su immagini vere di Matteo**: `uv run ink-scout sync-styles && uv run ink-scout ingest --kind upload --ref <cartella reference>` poi `serve` — il flusso è verificato con immagini sintetiche, non col suo materiale.
+- [ ] Installare l'extra `[tag]` e verificare ClipTagger su hardware reale (M3 Pro): oggi il tagging CLIP è coperto solo da encoder iniettato nei test.
+- [ ] (Opzionale, costa centesimi) Modo A live: key fal.ai nel Keychain (`security add-generic-password -a inkscout-fal-key -s ink-scout -w`) e 1 generazione vera.
 
 ## Backlog
 - Post-v1 (spec §13 «Dopo»): Modo B locale GPU, Modo C avanzato (ControlNet/IP-adapter), adapter Pinterest/Tattoodo, refine inpainting + storico versioni ricco, embedding semantico temi su larga scala
 - Decidere provider API secondario dopo fal.ai (Gemini vs Stability/Replicate) solo quando/se serve — l'interfaccia lo supporta già (spec §15)
 - Validare con un legale IP prima di qualsiasi uso commerciale (spec §11.9)
-- Rifinire il vocabolario stili iniziale di `data/styles.seed.yaml` (dalla tassonomia della ricerca) in fase di piano (spec §15)
+- Rifinire il vocabolario stili iniziale di `data/styles.seed.yaml` (dalla tassonomia della ricerca) (spec §15)
+- **Osservazioni dall'implementazione 24/07** (dagli esecutori, da valutare):
+  - `sync_styles` è idempotente ma non propaga: editare `styles.seed.yaml` dopo il primo sync non aggiorna i campi degli stili già in DB (solo nomi nuovi)
+  - portare il mapping line_treatment (`_BOLD`/`_FINE` in `ideation/brief.py`, oggi nomi di stile nel codice) nei `formal_attributes` del seed YAML
+  - `engine/hosted.py`: nome file da `hash()` Python (instabile tra run) → passare a sha256 dell'URL/contenuto
+  - `ingest/site.py`: JSON-LD via regex semplice → `json.loads` mirato sui blocchi `<script type="application/ld+json">`
+  - ingest: i Global Constraints citano «throttle + backoff» ma il contratto implementa solo il throttle (e scatta per item emesso, non per richiesta HTTP — rilevante se si pagina)
+  - web: CTA/attribuzione condizionate a `handle` non vuoto; valutare `artist.provenance_url` come link canonico della CTA al posto del `source_url` dell'immagine
 
 ## Idee
 
