@@ -13,6 +13,35 @@ line_treatments:
   soft: soft shaded linework
   _default: clean linework
 
+# Vocabolario degli ASSI (spec §7): il codice conosce gli assi, i VALORI stanno qui.
+# Ogni valore canonico elenca i modi in cui Matteo lo scrive davvero in chat, in italiano:
+# è così che «rotondo» diventa `form=round` senza un modello e senza codice da toccare.
+assi:
+  form:
+    round: [rotondo, rotonda, circolare, cerchio, tondo]
+    linear: [lineare, striscia, verticale, colonna]
+    geometric-shape: [triangolo, rombo, esagono]
+    organic: [organico, sinuoso]
+  color_mode:
+    black-only: [nero, bianco e nero, b/n, solo nero, blackwork]
+    color: [colore, colori, colorato, colorata]
+    red-black: [rosso e nero]
+  placement:
+    forearm: [avambraccio]
+    wrist: [polso]
+    arm: [braccio]
+    shoulder: [spalla]
+    back: [schiena]
+    chest: [petto]
+    leg: [gamba, polpaccio, coscia]
+    ankle: [caviglia]
+    hand: [mano, dita, dito]
+    neck: [collo]
+    ribs: [costole, fianco]
+  density:
+    high: [pieno, carico, denso]
+    low: [minimale, essenziale, leggero, piccolo]
+
 styles:
   - name: blackwork
     description: campiture nere piene, forte spazio negativo

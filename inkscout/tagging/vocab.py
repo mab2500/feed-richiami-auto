@@ -56,6 +56,25 @@ def style_names(path: str | Path) -> list[str]:
     return [s.name for s in load_styles(path)]
 
 
+def load_assi(path: str | Path) -> dict[str, dict[str, list[str]]]:
+    """`asse -> {valore canonico: [modi in cui lo si scrive]}`, dai DATI.
+
+    Il codice conosce gli ASSI (form, color_mode, placement, density); quali valori
+    esistano e come Matteo li scriva in italiano sta nel seed — vincolo §2.
+    """
+    doc = yaml.safe_load(Path(path).read_text()) or {}
+    out: dict[str, dict[str, list[str]]] = {}
+    for asse, valori in (doc.get("assi") or {}).items():
+        out[str(asse)] = {str(v): [str(s) for s in (sin or [])]
+                          for v, sin in (valori or {}).items()}
+    return out
+
+
+def alias_stili(path: str | Path) -> dict[str, list[str]]:
+    """`nome stile -> [alias]`, per riconoscere «fineline» quando lo stile è «fine-line»."""
+    return {s.name: list(s.aliases) for s in load_styles(path)}
+
+
 def line_treatments(path: str | Path) -> dict[str, str]:
     """La tabella `linework → istruzione di linea`, dai DATI (vincolo §2: il codice
     conosce l'asse `linework`, non i valori). L'ordine del dizionario è la priorità."""

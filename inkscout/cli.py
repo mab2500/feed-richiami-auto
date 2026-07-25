@@ -10,6 +10,7 @@ from inkscout.ingest import instagram, site, upload, whatsapp  # noqa: F401 — 
 from inkscout.ingest.base import get_adapter
 from inkscout.library.library import Library
 from inkscout.store.db import Store
+from inkscout.tagging.testo import TestoTagger
 from inkscout.tagging.vocab import sync_styles
 
 
@@ -42,7 +43,10 @@ def main(argv: list[str] | None = None) -> int:
         # la sorgente si registra una volta: senza, `image.source_id` resta NULL e la
         # provenance a DB (spec §11.7) è monca
         source_id = store.add_source(args.kind, args.ref, args.optin, src.notes)
-        added = dup = con_artista = 0
+        # tagger dal testo: gratis e senza modelli, sfrutta ciò che l'utente ha già scritto
+        # accanto all'immagine (didascalie WhatsApp). Se non c'è testo, non produce nulla.
+        tagger = TestoTagger(seed_path=cfg.styles_seed)
+        added = dup = con_artista = con_tag = 0
         for raw in adapter.fetch(src):
             # ⚠️ l'artista va creato QUI, altrimenti `artist_handle` si perde e la CTA
             # «Commissiona questo artista» (guardia §11.4) non si attiva mai nel flusso reale
@@ -54,8 +58,19 @@ def main(argv: list[str] | None = None) -> int:
             dup += int(res.is_duplicate)
             added += int(not res.is_duplicate)
             con_artista += int(bool(artist_id) and not res.is_duplicate)
+            if not res.is_duplicate:
+                tags = tagger.tag_testo(raw.meta.get("contesto", ""))
+                for t in tags:
+                    if t.axis == "style":
+                        continue
+                    store.add_image_tag(res.image_id, t.axis, t.value, t.confidence, "testo")
+                for nome in tagger.stili_nel_testo(raw.meta.get("contesto", "")):
+                    sid = store.style_id_by_name(nome)
+                    if sid is not None:
+                        store.add_image_style(res.image_id, sid)
+                con_tag += int(bool(tags))
         print(f"ingest {args.kind}: {added} nuove, {dup} duplicati, "
-              f"{con_artista} con artista attribuito")
+              f"{con_artista} con artista attribuito, {con_tag} taggate dal testo")
         return 0
 
     if args.cmd == "sync-styles":
