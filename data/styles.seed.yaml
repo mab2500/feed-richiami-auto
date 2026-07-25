@@ -1,4 +1,18 @@
 # Vocabolario stili INIZIALE (dati, non codice). Estendibile senza toccare il sorgente.
+
+# Come il `linework` di uno stile diventa l'istruzione di trattamento della linea nel
+# brief/prompt. Sta QUI e non nel codice per il vincolo §2 dello spec: il codice conosce
+# gli ASSI (linework), non i VALORI né i nomi degli stili.
+# ⚠️ L'ORDINE È LA PRIORITÀ: se il brief mescola stili con linework diversi vince il primo
+# di questa lista (il tratto più fine, perché uno stencil misto si disegna a linea fine).
+line_treatments:
+  thin: single-weight fine lines
+  fine: single-weight fine lines
+  thin-spiky: single-weight fine lines
+  bold: bold black outlines
+  soft: soft shaded linework
+  _default: clean linework
+
 styles:
   - name: blackwork
     description: campiture nere piene, forte spazio negativo

@@ -3,6 +3,8 @@ key dal Keychain. `poster`/`downloader` iniettabili per i test; reali via urllib
 
 from __future__ import annotations
 
+import hashlib
+
 from inkscout.config import Config, keychain_get
 from inkscout.core.models import Brief, DesignResult, EngineCapabilities
 from inkscout.engine.base import EngineKeyMissing, register_engine
@@ -54,7 +56,12 @@ class HostedAPIEngine:
         image_url = resp["images"][0]["url"]
         data = (self._downloader or _http_download)(image_url)
         self.config.images_dir.mkdir(parents=True, exist_ok=True)
-        dest = self.config.images_dir / f"gen-{abs(hash(image_url)) & 0xFFFFFFFF:08x}.png"
+        # ⚠️ sha256 del CONTENUTO, non `hash()` di Python: quello è randomizzato a ogni
+        # processo (PYTHONHASHSEED) → la stessa immagine finiva in file diversi a ogni run,
+        # e l'URL firmato di fal.ai cambia comunque a ogni chiamata. Con l'hash del
+        # contenuto due generazioni identiche collassano su un file solo.
+        impronta = hashlib.sha256(data).hexdigest()[:16]
+        dest = self.config.images_dir / f"gen-{impronta}.png"
         dest.write_bytes(data)
         return DesignResult(
             kind="raster",

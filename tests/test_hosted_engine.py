@@ -20,6 +20,29 @@ def _cfg(tmp_path, **env):
     return load_config(values)
 
 
+def test_nome_file_stabile_e_deduplicante(tmp_path):
+    """Prima il nome veniva da `hash()` di Python, randomizzato a ogni processo: la stessa
+    immagine finiva in file diversi a ogni run. Ora è sha256 del contenuto."""
+    def eng(url):
+        return HostedAPIEngine(
+            _cfg(tmp_path), key_getter=lambda *_: "K",
+            poster=lambda u, p, k: {"images": [{"url": url}]},
+            downloader=lambda u: b"PNGDATA-IDENTICO")
+
+    b = Brief(theme_text="owl", styles=["blackwork"])
+    # URL diversi (fal.ai firma ogni URL) ma stesso contenuto → stesso file
+    primo = eng("https://cdn/a.png?sig=1").generate(b).raster_path
+    secondo = eng("https://cdn/a.png?sig=2").generate(b).raster_path
+    assert primo == secondo
+    assert "gen-" in Path(primo).name and Path(primo).suffix == ".png"
+
+    diverso = HostedAPIEngine(
+        _cfg(tmp_path), key_getter=lambda *_: "K",
+        poster=lambda u, p, k: {"images": [{"url": "https://cdn/b.png"}]},
+        downloader=lambda u: b"ALTRO-CONTENUTO").generate(b).raster_path
+    assert diverso != primo
+
+
 def test_missing_key_raises(tmp_path):
     eng = HostedAPIEngine(_cfg(tmp_path), key_getter=lambda *_: None)
     with pytest.raises(EngineKeyMissing):
