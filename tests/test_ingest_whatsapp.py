@@ -164,3 +164,19 @@ def test_export_preferisce_chat_txt(tmp_path):
     (d / "altro.txt").write_text("x", encoding="utf-8")
     (d / "_chat.txt").write_text(IOS, encoding="utf-8")
     assert trova_export(d).name == "_chat.txt"
+
+
+def test_due_artisti_nella_stessa_chat_non_si_confondono():
+    """Caso reale (chat «Tatuaggi di coppia»): due reference di due tatuatori diversi.
+    Con la finestra simmetrica cieca la seconda foto ereditava l'handle della prima."""
+    msgs = parse_export(
+        "[12/03/24, 21:14:02] Matteo: guarda questo\n"
+        "[12/03/24, 21:14:08] Matteo: <allegato: a.jpg>\n"
+        "[12/03/24, 21:15:30] Matteo: e' di @sara.ink.studio, sta a Pisa\n"
+        "[12/03/24, 21:16:02] Jessica: bello! anche questo\n"
+        "[12/03/24, 21:16:20] Jessica: <allegato: b.jpg>\n"
+        "[12/03/24, 21:16:44] Jessica: https://instagram.com/marco_fineline_ ha fatto questo\n"
+    )
+    prima, seconda = (k for k, m in enumerate(msgs) if m.allegato)
+    assert estrai_handle(contesto(msgs, prima)) == "@sara.ink.studio"
+    assert estrai_handle(contesto(msgs, seconda)) == "@marco_fineline_"
