@@ -102,6 +102,17 @@ class Store:
         self.conn.commit()
         return cur.lastrowid
 
+    def styles_formal_attributes(self) -> dict[str, dict]:
+        """`nome stile -> formal_attributes`. È da qui che l'ideazione ricava il
+        trattamento della linea, invece di avere i nomi degli stili nel codice."""
+        out: dict[str, dict] = {}
+        for r in self.conn.execute("SELECT name, formal_attributes FROM style"):
+            try:
+                out[r["name"]] = json.loads(r["formal_attributes"] or "{}")
+            except (ValueError, TypeError):
+                out[r["name"]] = {}
+        return out
+
     def artist_id_by_handle(self, handle: str) -> int | None:
         if not handle:
             return None
@@ -204,6 +215,22 @@ class Store:
     ) -> int:
         existing = self.style_id_by_name(name)
         if existing is not None:
+            # ⚠️ PROPAGA: prima ritornava e basta, quindi correggere `styles.seed.yaml`
+            # dopo il primo sync non aggiornava nulla — il DB restava alla prima versione
+            # e il seed mentiva in silenzio (debito segnalato dagli esecutori il 24/07).
+            self.conn.execute(
+                "UPDATE style SET aliases=?, parent_style_id=?, formal_attributes=?, "
+                "description=?, is_emerging=? WHERE id=?",
+                (
+                    json.dumps(list(aliases)),
+                    parent_style_id,
+                    json.dumps(formal_attributes or {}),
+                    description,
+                    int(is_emerging),
+                    existing,
+                ),
+            )
+            self.conn.commit()
             return existing
         cur = self.conn.execute(
             "INSERT INTO style(name, aliases, parent_style_id, formal_attributes, "
