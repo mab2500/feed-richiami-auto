@@ -21,8 +21,9 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
 
 ## Ora (max 3)
 - [x] ~~Implementare l'MVP v1 eseguendo il piano~~ — **FATTO 24/07, 23/23 task**: pipeline subagent-driven (ondate di 2-3 Sonnet in parallelo, review Fable tra le ondate), 78 test + 1 skip (vtracer), ruff pulito, 27 commit. Milestone camminante verificata dal vivo (upload→libreria con dedup reale→Modo E→stencil 300 DPI) + test integrazione e2e offline. Guardie §11 testate a livello di pixel/HTML. Debito noto invariato: SVG centerline (`autotrace`) post-v1, l'MVP usa vtracer.
-- [ ] **Provarlo su immagini vere di Matteo**: `uv run ink-scout sync-styles && uv run ink-scout ingest --kind upload --ref <cartella reference>` poi `serve` — il flusso è verificato con immagini sintetiche, non col suo materiale.
-- [ ] Installare l'extra `[tag]` e verificare ClipTagger su hardware reale (M3 Pro): oggi il tagging CLIP è coperto solo da encoder iniettato nei test.
+- [x] ~~Verificare ClipTagger su hardware reale~~ — **FATTO 24/07**: extra `[tag]` installato (torch 2.13, MPS disponibile), pesi veri ViT-B-32, ~1,4 s/immagine dopo il warm-up. Trovato e corretto un **mismatch QuickGELU silenzioso** (`ViT-B-32` + pesi `openai` degrada l'accuratezza: ora `ViT-B-32-quickgelu`). ⚠️ Con soglia 0,20 su forme geometriche sintetiche **nessuno stile supera la soglia** (punteggi ~0,10 tutti appiattiti): la soglia va ritarata su immagini vere, non su disegni finti.
+- [x] ~~Verificare la web UI nel browser~~ — **FATTO 24/07**: galleria, studio, generate (Modo E) e export stencil provati dal vivo su dati demo. Guardie §11 confermate a schermo (banner, attribuzione, CTA, `do_not_mimic` filtrato). Corretti due difetti visti solo così: handle con **doppia chiocciola** (`@@jane`) e attribuzione sbagliata con più artisti nella stessa chat.
+- [ ] **Materiale vero dalle 2 chat WhatsApp** («tatuaggi per me» + «tatuaggi di coppia»): esportare le chat *con media* e dare la cartella a `ink-scout ingest --kind whatsapp --ref <cartella> --chat "<nome>"`. L'adapter estrae anche l'handle del tatuatore dal messaggio vicino. **Non urgente** (dichiarato da Matteo 24/07: nessun tatuaggio in programma adesso).
 - [ ] (Opzionale, costa centesimi) Modo A live: key fal.ai nel Keychain (`security add-generic-password -a inkscout-fal-key -s ink-scout -w`) e 1 generazione vera.
 
 ## Backlog
@@ -33,6 +34,7 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
 - **Osservazioni dall'implementazione 24/07** (dagli esecutori, da valutare):
   - `sync_styles` è idempotente ma non propaga: editare `styles.seed.yaml` dopo il primo sync non aggiorna i campi degli stili già in DB (solo nomi nuovi)
   - portare il mapping line_treatment (`_BOLD`/`_FINE` in `ideation/brief.py`, oggi nomi di stile nel codice) nei `formal_attributes` del seed YAML
+  - **ritarare la soglia di ClipTagger** (oggi 0,20) su reference vere: sulle forme sintetiche i punteggi restano tutti ~0,10 e nessun tag passa
   - `engine/hosted.py`: nome file da `hash()` Python (instabile tra run) → passare a sha256 dell'URL/contenuto
   - `ingest/site.py`: JSON-LD via regex semplice → `json.loads` mirato sui blocchi `<script type="application/ld+json">`
   - ingest: i Global Constraints citano «throttle + backoff» ma il contratto implementa solo il throttle (e scatta per item emesso, non per richiesta HTTP — rilevante se si pagina)
