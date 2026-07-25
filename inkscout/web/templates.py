@@ -23,7 +23,9 @@ def page(title: str, body: str) -> str:
 
 
 def image_card(row: dict) -> str:
-    handle = escape(row.get("handle") or "")
+    # lstrip("@"): il template antepone già la chiocciola, e gli handle IG arrivano
+    # con la @ dalla sorgente → senza normalizzare l'attribuzione mostra "@@jane".
+    handle = escape((row.get("handle") or "").lstrip("@"))
     src = escape(row.get("source_url") or "")
     attrib = f"fonte: <a href='{src}'>{src[:40]}</a>" if src else ""
     cta = (

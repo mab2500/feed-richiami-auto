@@ -1,6 +1,7 @@
 from PIL import Image
 
 from inkscout.store.db import Store
+from inkscout.web import templates
 from inkscout.web.app import App
 
 
@@ -38,3 +39,11 @@ def test_do_not_mimic_excluded(tmp_path):
     store.conn.commit()
     r = app.handle("GET", "/", {})
     assert "@jane" not in r.body
+
+
+def test_handle_not_double_at_sign():
+    # Gli handle arrivano con la "@" dalla sorgente (IG) e il template la antepone:
+    # senza normalizzazione l'attribuzione §11 mostra "@@jane" (visto nel browser).
+    html = templates.image_card({"id": 1, "handle": "@jane", "source_url": "https://x.example/a"})
+    assert "@@" not in html
+    assert "@jane" in html

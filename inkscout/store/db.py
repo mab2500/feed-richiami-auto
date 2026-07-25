@@ -102,6 +102,24 @@ class Store:
         self.conn.commit()
         return cur.lastrowid
 
+    def artist_id_by_handle(self, handle: str) -> int | None:
+        if not handle:
+            return None
+        row = self.conn.execute("SELECT id FROM artist WHERE handle=?", (handle,)).fetchone()
+        return row["id"] if row else None
+
+    def upsert_artist(self, handle: str, name: str = "", source_id=None,
+                      provenance_url: str = "") -> int | None:
+        """Un artista per handle. Senza questo ogni immagine ne creerebbe uno nuovo e
+        l'attribuzione (guardia §11) mostrerebbe lo stesso tatuatore N volte."""
+        if not handle:
+            return None
+        esistente = self.artist_id_by_handle(handle)
+        if esistente is not None:
+            return esistente
+        return self.add_artist(name=name or handle.lstrip("@"), handle=handle,
+                               source_id=source_id, provenance_url=provenance_url)
+
     # --- image ---
     def add_image(
         self, path, phash, width, height, artist_id, source_id, source_url, license_note, fetched_at
