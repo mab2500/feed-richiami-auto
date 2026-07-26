@@ -32,7 +32,27 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
   li scrive in italiano («rotondo»→`round`, «polso»→`wrist`).
   **(c)** chiusa la violazione del vincolo §2 (vedi Backlog), `sync_styles` che non propagava,
   e il nome-file instabile di `hosted.py`.
-- [ ] **Materiale vero dalle 2 chat WhatsApp** («tatuaggi per me» + «tatuaggi di coppia»): esportare le chat *con media* e dare la cartella a `ink-scout ingest --kind whatsapp --ref <cartella> --chat "<nome>"`. L'adapter estrae anche l'handle del tatuatore dal messaggio vicino. **Non urgente** (dichiarato da Matteo 24/07: nessun tatuaggio in programma adesso).
+- [x] ~~**Provarlo sul materiale VERO**~~ — **FATTO 25/07**, e non serviva esportare niente: gli
+  export delle due chat erano già in `~/.claude-whatsapp/exports-archive/` (**147 immagini**,
+  formato iOS). Ingerite → **124 uniche** (23 collassate dal dedup pHash, incluse quelle mandate
+  in entrambe le chat). **Tre difetti che solo i dati veri potevano rivelare:**
+  1. 🐛 **CLIP non discriminava nulla** — e non era colpa delle immagini sintetiche, come si
+     era supposto il 24/07: mancava **`logit_scale`** prima della softmax. Misurato su 40
+     reference vere: prima min 0,101 · mediana 0,103 · max 0,105 (l'uniforme su 10 stili è
+     0,100!), dopo **0,252 / 0,428 / 0,914**. Soglia default 0,20 → **0,30** (copertura 87%).
+  2. 🐛 **18 immagini attribuite a «@reel»**, un tatuatore inesistente: `instagram.com/reel/…`
+     è un contenuto condiviso, non un profilo. Ora i segmenti di percorso IG sono esclusi.
+  3. 🐛 **Frasi intime della chat di coppia finite nei tag `subject`** → il soggetto si salva
+     solo se il contesto parla davvero di tatuaggi (`pertinente()`).
+  **Cosa dicono i numeri sul materiale**: solo il **29%** degli allegati ha del testo accanto, e
+  quel testo parla per lo più di **aftercare e logistica dello studio**, non di stili → il canale
+  di tagging principale qui è **CLIP** (`ink-scout tag`), non il testo. E i link IG puntano a
+  reel/post, non a profili: **il tatuatore raramente è deducibile** dalla chat.
+- [ ] **L'unica cosa che serve il tuo occhio**: aprire `ink-scout serve` e guardare 15-20 immagini
+  con lo stile che CLIP ha assegnato, dicendo se è giusto. La soglia 0,30 è tarata sulla
+  **copertura** (87%), **non sulla precisione**: quella non la può misurare un numero. Se sbaglia
+  spesso, le leve sono due — alzare la soglia, o riscrivere i prompt del vocabolario stili
+  (oggi `"a {stile} tattoo"`, che è il default ingenuo di CLIP).
 - [ ] (Opzionale, costa centesimi) Modo A live: key fal.ai nel Keychain (`security add-generic-password -a inkscout-fal-key -s ink-scout -w`) e 1 generazione vera.
 
 ## Backlog
