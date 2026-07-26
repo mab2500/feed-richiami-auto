@@ -180,3 +180,17 @@ def test_due_artisti_nella_stessa_chat_non_si_confondono():
     prima, seconda = (k for k, m in enumerate(msgs) if m.allegato)
     assert estrai_handle(contesto(msgs, prima)) == "@sara.ink.studio"
     assert estrai_handle(contesto(msgs, seconda)) == "@marco_fineline_"
+
+
+def test_i_link_a_contenuti_instagram_non_sono_artisti():
+    """DIFETTO MISURATO sulle chat vere (25/07): `instagram.com/reel/XYZ` è un contenuto
+    CONDIVISO, non un profilo — la regex ne prendeva il primo segmento e attribuiva
+    **18 immagini** a un tatuatore inesistente «@reel». Da un link a un contenuto l'autore
+    non è deducibile: meglio nessun artista che uno inventato (guardia §11.4)."""
+    for url in ("https://www.instagram.com/reel/DAbc123/",
+                "https://instagram.com/p/CXYZ/",
+                "https://www.instagram.com/tv/Babc/",
+                "https://instagram.com/stories/qualcuno/123"):
+        assert estrai_handle(url) == "", url
+    # un profilo vero continua a funzionare
+    assert estrai_handle("https://instagram.com/ann_tattoo/") == "@ann_tattoo"

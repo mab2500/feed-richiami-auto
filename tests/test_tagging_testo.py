@@ -98,3 +98,16 @@ def test_ingest_whatsapp_tagga_e_la_galleria_diventa_cercabile(tmp_path, monkeyp
     app = App(store, tmp_path / "data" / "images")
     assert f"/image/{img_id}" in app.handle("GET", "/", {"theme": "serpente"}).body
     assert f"/image/{img_id}" not in app.handle("GET", "/", {"theme": "balena"}).body
+
+
+def test_pertinenza_non_salva_conversazione_privata():
+    """DIFETTO MISURATO sulle chat vere (25/07): nei tag `subject` erano finite frasi
+    intime della chat di coppia, che col tatuaggio non c'entrano nulla. Un soggetto si
+    salva solo se il contesto parla davvero di tatuaggi."""
+    t = _tagger()
+    intimo = "se dovessi smettere di amarmi neanche in quel caso i miei sentimenti"
+    assert t.soggetto(intimo) == ""
+    assert not any(x.axis == "subject" for x in t.tag_testo(intimo))
+    # con un termine pertinente il soggetto torna
+    assert "serpente" in t.soggetto("questo tatuaggio del serpente mi piace")
+    assert t.soggetto("lo voglio sulla gamba") != ""       # parte del corpo = pertinente

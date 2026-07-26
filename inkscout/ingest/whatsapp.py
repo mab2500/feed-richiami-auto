@@ -55,7 +55,16 @@ _ALLEGATI = (
 # handle IG: `@nome` o un link instagram. Il lookbehind evita di pescare le email.
 _HANDLE = re.compile(r"(?:instagram\.com/|(?<![\w.@])@)([A-Za-z0-9._]{2,30})")
 # parole che seguono un @ ma non sono handle (menzioni di contatti, orari…)
-_NON_HANDLE = {"gmail", "libero", "icloud", "hotmail", "yahoo", "outlook"}
+# ⚠️ `reel`/`p`/`tv`/… sono SEGMENTI DI PERCORSO di Instagram, non profili: un link a un
+# contenuto condiviso è `instagram.com/reel/XYZ`. MISURATO sulle chat vere di Matteo:
+# senza questa lista **18 immagini finivano attribuite a un tatuatore inesistente
+# «@reel»** — un'attribuzione falsa, cioè l'opposto della guardia §11.4. Da un link a un
+# contenuto l'autore NON è deducibile: meglio nessun artista che uno inventato.
+_NON_HANDLE = {
+    "gmail", "libero", "icloud", "hotmail", "yahoo", "outlook",
+    "reel", "reels", "p", "tv", "stories", "story", "explore", "share", "s",
+    "accounts", "direct", "invites", "challenge", "help", "about", "legal",
+}
 
 
 @dataclass

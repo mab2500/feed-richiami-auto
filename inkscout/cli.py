@@ -10,6 +10,7 @@ from inkscout.ingest import instagram, site, upload, whatsapp  # noqa: F401 — 
 from inkscout.ingest.base import get_adapter
 from inkscout.library.library import Library
 from inkscout.store.db import Store
+from inkscout.tagging.clip import SOGLIA_DEFAULT
 from inkscout.tagging.testo import TestoTagger
 from inkscout.tagging.vocab import sync_styles
 
@@ -23,6 +24,10 @@ def build_parser() -> argparse.ArgumentParser:
     pi.add_argument("--ref", required=True)
     pi.add_argument("--optin", action="store_true", help="consenso harvest personale (IG)")
     pi.add_argument("--chat", default="", help="nome della chat (solo --kind whatsapp)")
+    pt = sub.add_parser("tag", help="tagga la libreria con CLIP (visivo, offline)")
+    pt.add_argument("--soglia", type=float, default=SOGLIA_DEFAULT)
+    pt.add_argument("--limit", type=int, default=0, help="0 = tutte")
+    pt.add_argument("--rifai", action="store_true", help="ritagga anche chi ha già uno stile")
     sub.add_parser("sync-styles")
     ps = sub.add_parser("serve")
     ps.add_argument("--port", type=int, default=8765)
@@ -71,6 +76,40 @@ def main(argv: list[str] | None = None) -> int:
                 con_tag += int(bool(tags))
         print(f"ingest {args.kind}: {added} nuove, {dup} duplicati, "
               f"{con_artista} con artista attribuito, {con_tag} taggate dal testo")
+        return 0
+
+    if args.cmd == "tag":
+        # CLIP sulle immagini che non hanno ancora uno stile: è il tagging VISIVO, quello
+        # che serve qui (misurato: solo il 29% delle foto in chat ha del testo accanto).
+        from PIL import Image
+
+        from inkscout.tagging.clip import ClipTagger
+        from inkscout.tagging.vocab import style_names
+
+        vocab = style_names(cfg.styles_seed)
+        tagger = ClipTagger(vocab=vocab, threshold=args.soglia)
+        candidate = [r for r in store.list_images()
+                     if args.rifai or not store.styles_of_image(r["id"])]
+        candidate = candidate[: args.limit] if args.limit else candidate
+        print(f"tagging CLIP di {len(candidate)} immagini · soglia {args.soglia} "
+              f"· {len(vocab)} stili (la prima richiede il caricamento del modello)")
+        taggate = 0
+        for n, r in enumerate(candidate, 1):
+            try:
+                with Image.open(r["path"]) as im:
+                    tags = tagger.tag_image(im.convert("RGB"))
+            except (OSError, ValueError) as e:
+                print(f"  salto #{r['id']}: {e}")
+                continue
+            for t in tags:
+                sid = store.style_id_by_name(t.value)
+                if sid is not None:
+                    store.add_image_style(r["id"], sid)
+                    store.add_image_tag(r["id"], "style", t.value, t.confidence, "clip")
+            taggate += int(bool(tags))
+            if n % 25 == 0:
+                print(f"  …{n}/{len(candidate)}")
+        print(f"stile assegnato a {taggate}/{len(candidate)} immagini")
         return 0
 
     if args.cmd == "sync-styles":

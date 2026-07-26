@@ -102,6 +102,12 @@ class Store:
         self.conn.commit()
         return cur.lastrowid
 
+    def styles_of_image(self, image_id: int) -> list[str]:
+        """Gli stili già collegati a un'immagine: serve per non ri-taggare ciò che è fatto."""
+        return [r["name"] for r in self.conn.execute(
+            "SELECT s.name FROM style s JOIN image_style i ON i.style_id=s.id "
+            "WHERE i.image_id=? ORDER BY s.name", (image_id,))]
+
     def styles_formal_attributes(self) -> dict[str, dict]:
         """`nome stile -> formal_attributes`. È da qui che l'ideazione ricava il
         trattamento della linea, invece di avere i nomi degli stili nel codice."""

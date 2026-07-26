@@ -31,6 +31,24 @@ _STOPWORD = {
 _PAROLA = re.compile(r"[a-zàèéìòóùA-ZÀÈÉÌÒÓÙ][\w'àèéìòóù-]{2,}")
 MAX_SUBJECT = 200
 
+# ⚠️ PERTINENZA — difetto misurato sulle chat vere (25/07). Il contesto di una foto è la
+# conversazione che le sta attorno, e in una chat di coppia quella conversazione può essere
+# **intima**: senza questo filtro finivano nei tag `subject` frasi private che col tatuaggio
+# non c'entrano nulla. Un soggetto si salva solo se il testo attorno parla davvero del
+# tatuaggio: meglio nessun tag che un tag che espone un pezzo di dialogo personale.
+_PERTINENTE = re.compile(
+    r"(?ix)\b(?:tatu\w*|tattoo\w*|stencil|disegn\w+|linework|ink|inked|"
+    r"stud[il]o|tatuator\w+|artist\w*|"
+    r"braccio|avambraccio|polso|spalla|schiena|petto|gamba|coscia|polpaccio|caviglia|"
+    r"collo|costole|fianco|mano|dita|dito|"
+    r"nero|blackwork|fine[\s-]?line|dotwork|minimal\w*|geometric\w*|ornament\w*|"
+    r"realis\w*|traditional|old[\s-]?school|lettering|scritta)\b")
+
+
+def pertinente(testo: str) -> bool:
+    """Il testo attorno all'immagine parla di tatuaggi? Se no, non è un soggetto."""
+    return _PERTINENTE.search(testo or "") is not None
+
 
 def _normalizza(s: str) -> str:
     """Minuscolo e senza accenti: «rotondò» e «Rotondo» devono valere uguale."""
@@ -93,7 +111,13 @@ class TestoTagger:
 
     def soggetto(self, testo: str) -> str:
         """Il testo ripulito da stopword e handle: diventa il tag `subject`, che è testo
-        LIBERO (spec §2) e rende la galleria cercabile con le parole di Matteo."""
+        LIBERO (spec §2) e rende la galleria cercabile con le parole di Matteo.
+
+        Restituisce "" se il contesto non è pertinente ai tatuaggi (vedi `pertinente`):
+        è la guardia contro il salvataggio di conversazione privata.
+        """
+        if not pertinente(testo):
+            return ""
         senza_handle = re.sub(r"(?:https?://\S+|@[\w.]+)", " ", testo or "")
         parole = [p for p in _PAROLA.findall(senza_handle)
                   if _normalizza(p) not in _STOPWORD]
