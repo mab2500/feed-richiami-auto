@@ -60,8 +60,11 @@ def gallery(rows: list[dict], filters: dict) -> str:
 
 
 def studio_form(modes: list[str], styles: list[str]) -> str:
-    opts = "".join(f"<option value='{m}'>{m}</option>" for m in modes)
-    style_hint = ", ".join(styles[:8])
+    # Gli attributi sono delimitati da apici SINGOLI e i valori arrivano dal DB: uno stile
+    # come «l'ombra» chiudeva l'attributo e sfondava il markup. `escape` si usa già ovunque
+    # qui accanto — mancava solo dove i valori non sembravano «testo dell'utente».
+    opts = "".join(f"<option value='{escape(m)}'>{escape(m)}</option>" for m in modes)
+    style_hint = escape(", ".join(styles[:8]))
     return (
         "<h2>Studio</h2><form method='post' action='/generate'>"
         f"modo: <select name='mode'>{opts}</select><br>"
@@ -74,7 +77,7 @@ def studio_form(modes: list[str], styles: list[str]) -> str:
 
 def result_view(result, reference_ids: list[int]) -> str:
     mood = "".join(f"<img src='/image/{i}' width='120'>" for i in reference_ids)
-    neg = escape(result.meta.get("negative_prompt", ""))
+    neg = escape(result.meta.get("negative_prompt") or "")   # `escape(None)` è AttributeError
     return (
         "<h2>Risultato</h2>"
         "<p style='background:#e8f5e9;padding:.4rem'>AI-generated / reference only — "

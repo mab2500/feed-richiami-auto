@@ -65,15 +65,22 @@ def main(argv: list[str] | None = None) -> int:
             con_artista += int(bool(artist_id) and not res.is_duplicate)
             if not res.is_duplicate:
                 tags = tagger.tag_testo(raw.meta.get("contesto", ""))
+                # ⚠️ `int(bool(tags))` contava i tag TROVATI, ma il ciclo salta quelli di
+                # asse `style`: una foto i cui tag erano tutti stili finiva contata come
+                # «taggata dal testo» senza che a DB fosse scritto niente. Si conta ciò
+                # che è stato SCRITTO.
+                scritti = 0
                 for t in tags:
                     if t.axis == "style":
                         continue
                     store.add_image_tag(res.image_id, t.axis, t.value, t.confidence, "testo")
+                    scritti += 1
                 for nome in tagger.stili_nel_testo(raw.meta.get("contesto", "")):
                     sid = store.style_id_by_name(nome)
                     if sid is not None:
                         store.add_image_style(res.image_id, sid)
-                con_tag += int(bool(tags))
+                        scritti += 1
+                con_tag += int(scritti > 0)
         print(f"ingest {args.kind}: {added} nuove, {dup} duplicati, "
               f"{con_artista} con artista attribuito, {con_tag} taggate dal testo")
         return 0

@@ -74,6 +74,10 @@ class App:
         img_id = int(params["id"])
         if path == "/favorite":
             row = self.store.get_image(img_id)
+            # stesso guard già presente in `_serve_image` e `_export`: qui mancava, e un id
+            # inesistente (link vecchio, immagine cancellata) faceva TypeError su None
+            if not row:
+                return Response(404, "text/plain; charset=utf-8", "no image")
             self.store.set_favorite(img_id, not row["favorite"])
         else:
             self.store.set_hidden(img_id, True)

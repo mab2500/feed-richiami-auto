@@ -21,7 +21,7 @@ class StyleSeed:
 
 
 def load_styles(path: str | Path) -> list[StyleSeed]:
-    doc = yaml.safe_load(Path(path).read_text()) or {}
+    doc = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     out = []
     for item in doc.get("styles", []):
         out.append(
@@ -62,7 +62,7 @@ def load_assi(path: str | Path) -> dict[str, dict[str, list[str]]]:
     Il codice conosce gli ASSI (form, color_mode, placement, density); quali valori
     esistano e come Matteo li scriva in italiano sta nel seed — vincolo §2.
     """
-    doc = yaml.safe_load(Path(path).read_text()) or {}
+    doc = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     out: dict[str, dict[str, list[str]]] = {}
     for asse, valori in (doc.get("assi") or {}).items():
         out[str(asse)] = {str(v): [str(s) for s in (sin or [])]
@@ -78,7 +78,7 @@ def alias_stili(path: str | Path) -> dict[str, list[str]]:
 def line_treatments(path: str | Path) -> dict[str, str]:
     """La tabella `linework → istruzione di linea`, dai DATI (vincolo §2: il codice
     conosce l'asse `linework`, non i valori). L'ordine del dizionario è la priorità."""
-    doc = yaml.safe_load(Path(path).read_text()) or {}
+    doc = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     return {str(k): str(v) for k, v in (doc.get("line_treatments") or {}).items()}
 
 

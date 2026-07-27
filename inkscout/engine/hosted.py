@@ -38,7 +38,9 @@ class HostedAPIEngine:
         )
 
     def generate(self, brief: Brief) -> DesignResult:
-        key = self.key_getter(_KEYCHAIN_ACCOUNT)
+        # `security find-generic-password -w` restituisce la chiave con l'a capo finale:
+        # finiva dentro l'header Authorization e la richiesta HTTP falliva.
+        key = (self.key_getter(_KEYCHAIN_ACCOUNT) or "").strip()
         if not key:
             raise EngineKeyMissing(
                 "manca la API key di fal.ai nel Keychain macOS. Aggiungila con: "
@@ -53,7 +55,16 @@ class HostedAPIEngine:
         }
         url = _FAL_URL_TMPL.format(model=self.config.fal_model_id)
         resp = (self._poster or _http_post)(url, payload, key)
-        image_url = resp["images"][0]["url"]
+        # ⚠️ Questo è l'unico modo che COSTA: un KeyError/IndexError nudo qui arriva
+        # dopo aver già speso la chiamata, e non dice se ritentare o se il modello ha
+        # rifiutato il prompt. La risposta va guardata prima di indicizzarla.
+        immagini = (resp or {}).get("images") or []
+        image_url = immagini[0].get("url") if immagini else None
+        if not image_url:
+            raise RuntimeError(
+                "la risposta di fal.ai non contiene immagini "
+                f"(modello {self.config.fal_model_id}): {str(resp)[:200]}"
+            )
         data = (self._downloader or _http_download)(image_url)
         self.config.images_dir.mkdir(parents=True, exist_ok=True)
         # ⚠️ sha256 del CONTENUTO, non `hash()` di Python: quello è randomizzato a ogni
