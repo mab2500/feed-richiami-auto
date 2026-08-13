@@ -28,3 +28,7 @@ secrets.*
 
 # macOS
 .DS_Store
+
+# backup automatici dei NEXT (`NEXT.md.bak-<timestamp>`): servono sul momento,
+# in git sarebbero rumore permanente — la storia di NEXT.md ce l'ha già git.
+*.bak-*

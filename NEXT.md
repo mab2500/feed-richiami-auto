@@ -49,11 +49,13 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
   di tagging principale qui è **CLIP** (`ink-scout tag`), non il testo. E i link IG puntano a
   reel/post, non a profili: **il tatuatore raramente è deducibile** dalla chat.
 - [ ] **L'unica cosa che serve il tuo occhio**: aprire `ink-scout serve` e guardare 15-20 immagini
+  - ⏸ rimandato **[29/07]** (rimanda)  <!-- plancia:nex-abdb15fc01 -->
   con lo stile che CLIP ha assegnato, dicendo se è giusto. La soglia 0,30 è tarata sulla
   **copertura** (87%), **non sulla precisione**: quella non la può misurare un numero. Se sbaglia
   spesso, le leve sono due — alzare la soglia, o riscrivere i prompt del vocabolario stili
   (oggi `"a {stile} tattoo"`, che è il default ingenuo di CLIP).
 - [ ] (Opzionale, costa centesimi) Modo A live: key fal.ai nel Keychain (`security add-generic-password -a inkscout-fal-key -s ink-scout -w`) e 1 generazione vera.
+  - ✅ deciso **[29/07]** No, rimandare a fase successiva Evita spese anche se piccole.  <!-- plancia:dom-96ba3e744b -->
 
 ## Backlog
 - Post-v1 (spec §13 «Dopo»): Modo B locale GPU, Modo C avanzato (ControlNet/IP-adapter), adapter Pinterest/Tattoodo, refine inpainting + storico versioni ricco, embedding semantico temi su larga scala
@@ -85,6 +87,15 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
 ### 💬 Da WhatsApp — «Cose da ricordare» (estrazione profonda, 16/07/26)
 - 💡 Valutare un motore/backend di generazione immagini stile Ideogram per produrre scritte/lettering in stili grafici specifici come spunto per il generatore di tatuaggi (es. scritta "stile Kafka") — *«quaderno Cose da ricordare»* `[30/10/24]`
 <!-- END wa-idee 2026-07-16b -->
+
+### 📡 Proposte dal radar ricerca-AI — da confermare
+<!-- radar-ricerca-ai:blocco-idee — generato da `radar dispatch`; i marcatori `radar-idea:` evitano i doppioni, non toglierli -->
+> ⚠️ Voci proposte dal radar a partire dalla ricerca AI: **non sono decisioni di Matteo**.
+> Si confermano, si riscrivono o si cancellano a mano — il radar non le rimette.
+
+- 💡 **Candidare Mage-Flow come backend locale/self-hosted del motore generativo pluggable, per generare reference e stencil a risoluzione nativa 1024x1024 invece di generare basso e upscalare.** — ⚠️ *proposta del radar, non confermata* <!-- radar-idea:1ec7c0b30e -->
+  come: ink-scout ha per design un motore PLUGGABLE default-offline con fal.ai solo opt-in, e l'MVP è appena chiuso (78 test, prossimo passo: provarlo su immagini vere). Il meccanismo di Mage-Flow — co-design tokenizer+backbone che permette training/inferenza a risoluzione nativa con un modello da soli 4B e latenza <1s su A100 — è esattamente il profilo che serve al backend offline: 4B è l'ordine di grandezza che (quantizzato) può stare nei 18 GB dell'M3 Pro, e la risoluzione nativa evita l'upscaling che sporca le linee pulite richieste dall'export stencil. In più la capacità di EDITING coprirebbe il caso d'uso 'reference reale → variazione nello stile X' con un solo modello, senza pipeline img2img separata. Passo concreto: aggiungere un adapter nel motore pluggable e un check di fattibilità (pesi disponibili? gira su MPS/Metal?). Confidence bassa perché la riproducibilità è 'non dichiarato': senza pesi pubblici resta carta.
+  ↳ 2026-07-26 · da `radar-ricerca-ai` (motore idee) · lavoro: «Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing» https://huggingface.co/papers/2607.19064 · sforzo M · confidenza 0.40
 
 ## Deciso di non fare
 - Scraping come feature-da-servizio: harvest solo personale opt-in (spec §11.3)
