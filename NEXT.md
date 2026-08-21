@@ -58,6 +58,10 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
   - ✅ deciso **[29/07]** No, rimandare a fase successiva Evita spese anche se piccole.  <!-- plancia:dom-96ba3e744b -->
 
 ## Backlog
+
+- 🔧 **Da GitHub [21/08]** — verdetto «adottare» su `cleanlab/cleanlab`. Cosa sblocca, comando di
+  installazione e condizione che fa scadere il verdetto: `_meta/RICOGNIZIONE-GITHUB-PER-PROGETTO.md`.
+  ⚠️ Leggi **prima** il riquadro di correzioni in cima alla §1: quattro voci erano sbagliate.
 - Post-v1 (spec §13 «Dopo»): Modo B locale GPU, Modo C avanzato (ControlNet/IP-adapter), adapter Pinterest/Tattoodo, refine inpainting + storico versioni ricco, embedding semantico temi su larga scala
 - Decidere provider API secondario dopo fal.ai (Gemini vs Stability/Replicate) solo quando/se serve — l'interfaccia lo supporta già (spec §15)
 - Validare con un legale IP prima di qualsiasi uso commerciale (spec §11.9)
@@ -96,6 +100,25 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
 - 💡 **Candidare Mage-Flow come backend locale/self-hosted del motore generativo pluggable, per generare reference e stencil a risoluzione nativa 1024x1024 invece di generare basso e upscalare.** — ⚠️ *proposta del radar, non confermata* <!-- radar-idea:1ec7c0b30e -->
   come: ink-scout ha per design un motore PLUGGABLE default-offline con fal.ai solo opt-in, e l'MVP è appena chiuso (78 test, prossimo passo: provarlo su immagini vere). Il meccanismo di Mage-Flow — co-design tokenizer+backbone che permette training/inferenza a risoluzione nativa con un modello da soli 4B e latenza <1s su A100 — è esattamente il profilo che serve al backend offline: 4B è l'ordine di grandezza che (quantizzato) può stare nei 18 GB dell'M3 Pro, e la risoluzione nativa evita l'upscaling che sporca le linee pulite richieste dall'export stencil. In più la capacità di EDITING coprirebbe il caso d'uso 'reference reale → variazione nello stile X' con un solo modello, senza pipeline img2img separata. Passo concreto: aggiungere un adapter nel motore pluggable e un check di fattibilità (pesi disponibili? gira su MPS/Metal?). Confidence bassa perché la riproducibilità è 'non dichiarato': senza pesi pubblici resta carta.
   ↳ 2026-07-26 · da `radar-ricerca-ai` (motore idee) · lavoro: «Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing» https://huggingface.co/papers/2607.19064 · sforzo M · confidenza 0.40
+
+### 🎓 Proposte dalla KB dei corsi — da confermare
+<!-- atlante-ia:blocco-idee — generato da `atlante idee`; i marcatori `kb-idea:` evitano i doppioni, non toglierli -->
+> ⚠️ Voci proposte a partire dalle note dei corsi già distillate: **non sono decisioni di Matteo**.
+> Ogni voce cita gli `id` delle note su cui si regge — si verificano con `get_note(<id>)`.
+> Si confermano, si riscrivono o si cancellano a mano — `atlante idee` non le rimette.
+
+- 💡 **Estendere la pipeline di ideazione includendo un step di 'simulazione visiva' strutturata per i disegni proposti.** — ⚠️ *proposta dalla KB, non confermata* <!-- kb-idea:2228169be3 -->
+  come: Utilizzare l'agente Elisia (id: archivio-live/15-10-elisia-rag-open-source-per-documenti-loc) per indicizzare e interrogare il database vettoriale dei lavori degli artisti tatuatori, richiedendo all'AI di restituire non solo descrizioni testuali ma un output strutturato (come JSON con specifiche tecniche) che includa layout o riferimenti visivi da usare come input per i subagent generativi.
+  ↳ 2026-08-21 · da `atlante-ia` (KB dei corsi) · concetto: ai-locale · note: `archivio-live/15-10-elisia-rag-open-source-per-documenti-loc`, `rizzo-ai-academy-simone-rizzo/13-rag-in-locale-open-source-live-3-settemb`
+- 💡 **Implementare un assistente di validazione e contestualizzazione locale che spiega le scelte progettuali basandosi su regole logiche codificate.** — ⚠️ *proposta dalla KB, non confermata* <!-- kb-idea:1badd044da -->
+  come: Sfruttare l'AI Simbolica (id: archivio-live/04-ai-simbolica-quella-che-ragiona-verament) per costruire un modulo che, dopo la generazione del tracciato dai subagent, applichi regole logiche esplicithe (es. 'se il disegno viola i canoni estetici dell'artista X, allora richiedi revisione') invece di affidarsi solo alla probabilità statistica dei modelli neurali.
+  ↳ 2026-08-21 · da `atlante-ia` (KB dei corsi) · concetto: ai-locale · note: `archivio-live/04-ai-simbolica-quella-che-ragiona-verament`
+- 💡 **Implementare una UI avanzata per l'MVP che rifletta lo stile 'tatto/tatuaggio' utilizzando tecniche di design complesse.** — ⚠️ *proposta dalla KB, non confermata* <!-- kb-idea:e4fe89977b -->
+  come: Sfruttando le capacità di Claude Design per generare asset coerenti e combinando Auto-Layout con effetti glossy e gradienti mascherati su Figma per la card principale, come descritto nelle note sulla card avanzata.
+  ↳ 2026-08-21 · da `atlante-ia` (KB dei corsi) · concetto: prototipazione · note: `diventa-designer-talent-garden/06-realizziamo-una-card-livello-avanzato`, `diventa-designer-talent-garden/01-riprogettiamo-spotify-1`
+- 💡 **Strutturare lo sviluppo dell'MVP seguendo un processo validato in 5 passi per ridurre i tempi di iterazione sul codice dei tatuatori.** — ⚠️ *proposta dalla KB, non confermata* <!-- kb-idea:1437ba0f2d -->
+  come: Applicando la metodologia strategica definita nelle note per definire, validare e costruire il tool con Claude Code, assicurandosi che ogni fase della pipeline subagent-driven sia allineata a una pianificazione chiara prima dell'implementazione.
+  ↳ 2026-08-21 · da `atlante-ia` (KB dei corsi) · concetto: prototipazione · note: `claude-code-costruire-tool-dashboard-e-web-app-con-vibe-coding/02-costruire-e-validare-il-tuo-tool-con-cla`, `claude-code-costruire-tool-dashboard-e-web-app-con-vibe-coding/06-approvare-il-piano-e-accompagnare-claude`
 
 ## Deciso di non fare
 - Scraping come feature-da-servizio: harvest solo personale opt-in (spec §11.3)
