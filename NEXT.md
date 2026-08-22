@@ -59,6 +59,12 @@ Per interrogarli: `uv run atlante ask "<domanda>"` in `atlante-ia`, o il server 
 
 ## Backlog
 
+- 🟡 **Lint: dichiarare le regole nel pyproject** `[22/08]` — oggi non c'è nessun `select`, e il
+  lint della CI dipende dalla versione di ruff che il runner risolve (qui `uv.lock` la tiene a
+  0.15.22, ma è un effetto collaterale, non una scelta scritta). Fra la 0.15 e la 0.16 i default
+  sono passati **da 61 regole a 415**. **Costo misurato per allinearsi alla convenzione**
+  (`E,F,I,UP,B`, `E501` escluso): **30 errori**. Chiusura `2026-08-22-ci-condiviso-token.md`.
+
 - 🔧 **Da GitHub [21/08]** — verdetto «adottare» su `cleanlab/cleanlab`. Cosa sblocca, comando di
   installazione e condizione che fa scadere il verdetto: `_meta/RICOGNIZIONE-GITHUB-PER-PROGETTO.md`.
   ⚠️ Leggi **prima** il riquadro di correzioni in cima alla §1: quattro voci erano sbagliate.
