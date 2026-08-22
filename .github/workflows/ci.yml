@@ -1,0 +1,25 @@
+name: CI
+
+# Aggiunto il 22/08/2026. Modello: `cruscotto-salute`, che era l'unico progetto con CI
+# mentre 14 avevano una suite di test lanciata solo a mano.
+# `push` senza filtro di branch di proposito: qui il lavoro vive sui branch
+# (kb-idee-proposte, kb-motore-proposte…), un trigger solo-main non scatterebbe mai.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installa uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Lint (ruff)
+        run: uv run --with ruff ruff check .
+
+      - name: Test (pytest)
+        run: uv run pytest -q
