@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Richiami auto — dati pubblici per l'app</title>
+<style>
+  body { font: 16px/1.5 -apple-system, system-ui, sans-serif; max-width: 42rem; margin: 3rem auto; padding: 0 1rem; color: #222; }
+  code { background: #f2f2f2; padding: 0 .25em; }
+  h1 { font-size: 1.5rem; }
+  small { color: #555; }
+</style>
+</head>
+<body>
+<h1>Richiami auto — dati pubblici</h1>
+<p>Questo sito serve <strong>solo dati</strong>: i richiami di sicurezza delle automobili, riorganizzati
+per marca in file JSON statici che un'app di manutenzione auto scarica e confronta con il veicolo
+dell'utente. Nessun dato personale: qui non c'è niente che riguardi chi usa l'app.</p>
+<ul>
+  <li><a href="manifest.json"><code>manifest.json</code></a> — l'indice: data di generazione, fonti,
+      e per ogni marca il file, quanti richiami contiene e la sua impronta <code>sha256</code>.</li>
+  <li><code>richiami/&lt;marca&gt;.json</code> — un file per marca (per esempio
+      <a href="richiami/ford.json"><code>richiami/ford.json</code></a>).</li>
+</ul>
+<p>I file si rigenerano ogni notte dal Mac che legge le due fonti qui sotto. Il testo dei richiami è in
+inglese, come nelle fonti; dove presente, la traduzione italiana è <strong>automatica</strong> (modello
+locale, non rivista da una persona) e l'originale resta accanto.</p>
+
+<h2>Fonti e licenze</h2>
+<p><strong>Safety Gate</strong> — sistema di allerta rapido dell'Unione europea per i prodotti non alimentari
+pericolosi, Commissione europea. © Unione europea, riutilizzo ai sensi della decisione 2011/833/UE e
+licenza <a href="https://creativecommons.org/licenses/by/4.0/deed.it">CC BY 4.0</a>. Dati riorganizzati e
+filtrati per veicolo (solo automobili); testo dell'allerta non modificato; <strong>tradotto
+automaticamente</strong> dove indicato (modifica rispetto all'originale); la Commissione non risponde
+dell'uso che ne viene fatto. Fonte: <a href="https://ec.europa.eu/safety-gate-alerts/">ec.europa.eu/safety-gate-alerts</a>.</p>
+<p><strong>DVSA</strong> — Driver and Vehicle Standards Agency, Regno Unito. Contains public sector
+information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open
+Government Licence v3.0</a>. © Crown copyright. Fonte:
+<a href="https://www.check-vehicle-recalls.service.gov.uk/">check-vehicle-recalls.service.gov.uk</a>.</p>
+<p><small>Le informazioni hanno natura informativa: «nessun richiamo trovato» significa che nessun richiamo
+è stato trovato nelle fonti lette alla data indicata nel manifest, non che il veicolo non ne abbia.
+Per il riferimento ufficiale vale sempre la scheda del costruttore o dell'autorità.</small></p>
+</body>
+</html>

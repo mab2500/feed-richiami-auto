@@ -1,0 +1,3 @@
+{"schema":1,"marca":"sirus","richiami":[
+{"anni":{"fine":2011,"inizio":2009},"chiavi_modello":["caddy"],"codice_campagna":"ICAN/UCAN G1","data":"2011-05-17","difetto":"Customer reported that the Handbrake was inadvertently switched on whilst the driver was driving causing the wheels to lock resulting in an accident","fonte":"dvsa","id":"dvsa:R/2011/012:c3773bec","lingua":"en","marca":"sirus","marche":["sirus"],"modello":"CADDY , CADDY","omologazione_grezza":"","omologazioni":[],"rimedio":"The handbrake operating switch to be replaced with a modified switch to eliminate the problem.","rischio":"","tipo_rischio":"","titolo":"HANDBRAKE MAY BE INADVERTENTLY APPLIED","traduzione":null,"url_ufficiale":null}
+]}

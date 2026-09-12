@@ -1,0 +1,3 @@
+{"schema":1,"marca":"sargentelecserv","richiami":[
+{"anni":{"fine":2016,"inizio":2016},"chiavi_modello":["ec155"],"codice_campagna":"","data":"2017-05-05","difetto":"The printed circuit in the power supply unit may overheat.","fonte":"dvsa","id":"dvsa:RCOMP/2017/005:949390c5","lingua":"en","marca":"sargentelecserv","marche":["sargentelecserv"],"modello":"EC155 , EC155","omologazione_grezza":"","omologazioni":[],"rimedio":"On affected vehicles replace the power supply unit with an unaffected version","rischio":"","tipo_rischio":"","titolo":"PRINTED CIRCUIT BOARD MAY OVERHEAT","traduzione":null,"url_ufficiale":null}
+]}

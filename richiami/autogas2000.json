@@ -1,0 +1,3 @@
+{"schema":1,"marca":"autogas2000","richiami":[
+{"anni":null,"chiavi_modello":["autogas 2000"],"codice_campagna":"","data":"2001-04-30","difetto":"Engine speed may exceed the permitted rpm and cause the automatic gearbox to shift to neutral.","fonte":"dvsa","id":"dvsa:R/2001/045:8a85bd55","lingua":"en","marca":"autogas2000","marche":["autogas2000"],"modello":"AUTOGAS 2000 , AUTOGAS 2000","omologazione_grezza":"","omologazioni":[],"rimedio":"Fit a control box which at 5500 rpm will switch the engine fuelling system back to petrol ensuring that the engine maximum speed is under the control of the O/E rev limiter.","rischio":"","tipo_rischio":"","titolo":"GAS CONVERSION MAY NEUTRALISE ENGINE REV LIMITER","traduzione":null,"url_ufficiale":null}
+]}
