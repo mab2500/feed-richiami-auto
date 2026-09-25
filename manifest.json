@@ -9,7 +9,7 @@
    "ultimo": "2026-09-25"
   }
  },
- "generato_il": "2026-09-25T11:56:12Z",
+ "generato_il": "2026-09-25T18:55:15Z",
  "marche": {
   "1jeep": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -47,11 +47,11 @@
    "sha256": "92c2543b1b3d2e45995c2364f676bd61b4191d6292627744c3ae52ad30c22258"
   },
   "abteline": {
-   "aggiornato_il": "2026-09-12T16:35:31Z",
-   "bytes": 1359,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 2034,
    "n": 1,
    "nome": "ABT e-Line",
-   "sha256": "57d40742de20c00392a8e806937b110939a42b6e8914c2d159a9fc1aaf5811bb"
+   "sha256": "9a8c33a5a96a676baaad14fbe9d4dc494170a8cd320c70f8877727f5e5af0dca"
   },
   "aclass": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -75,11 +75,11 @@
    "sha256": "b0c5a0c2099ec8089750323e6352f9e4ef1c214ad7158467b2550b3ecc055ef4"
   },
   "aiways": {
-   "aggiornato_il": "2026-09-12T16:35:31Z",
-   "bytes": 1248,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 2122,
    "n": 1,
    "nome": "Aiways",
-   "sha256": "558ab41eea1742f774d69f6fa25d74308e7b78323af07253dc69b181f442167f"
+   "sha256": "84cb8e26dc76fefddba80df6703989dde3940befcb45634f4eccfcbfdea92cd9"
   },
   "aixam": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -103,11 +103,11 @@
    "sha256": "35187c1836eadf8fb66734adbac9fda47a0468e2e685a2739e25e3eebe030535"
   },
   "alfaromeo": {
-   "aggiornato_il": "2026-09-24T18:57:31Z",
-   "bytes": 116702,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 117287,
    "n": 124,
    "nome": "Alfa Romeo",
-   "sha256": "0f6fcf39c09fb662e60f3016dc6d9dc909692a5d3f96f93df7089e2fce130a95"
+   "sha256": "4ef6f786546b978b5abed933422b1c1dfb1394de0c721ab1f8889affe8c543ec"
   },
   "alkokober": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -222,11 +222,11 @@
    "sha256": "95068ada81a9511982526693727d0f4c45841c3712751f9531f01b7ca5bf2d88"
   },
   "audi": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 404217,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 408806,
    "n": 431,
    "nome": "Audi",
-   "sha256": "b8afbadc47503cc178133d5245e4ebc2f1e5e639df1d5ee965fd13e28b8e0119"
+   "sha256": "3c6311ad6630285f092467c96d62c4500ee9a0fe6bc361466587cc523e92c46e"
   },
   "autocruiseandpioneer": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -376,11 +376,11 @@
    "sha256": "d818d7941ca73befe8c67a6a5f8f78a15e0e655aa309be9041ede5ebc3bf3a2f"
   },
   "bentley": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 94625,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 95865,
    "n": 101,
    "nome": "Bentley",
-   "sha256": "9e8459c04346e8b69fe0eeb66c2bc3d2ebca3128e470c0ee60b235162f91f4e3"
+   "sha256": "b200eb16eed3356f15d56c2fa2d6144332d029e77406ff0ff0aa0c9b58a13f88"
   },
   "berkhof": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -425,11 +425,11 @@
    "sha256": "cdf68ebf6998dc6dda25e88c5c7f37ebaacdd6b5f716df888899fda119f30d98"
   },
   "bmw": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 1106950,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 1108449,
    "n": 1179,
    "nome": "Bmw",
-   "sha256": "b2409a8eb192cb6c340d089400dad67fd3c407cc5445113eb4844a882ae82bd9"
+   "sha256": "80ed62bea94ea11760419d436d0c150779321449914c01ea50ad62b0af1ad6a4"
   },
   "bockmannfahrzeugwerkegmbh": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -747,11 +747,11 @@
    "sha256": "90beb6f207a95ea5cac529a535177a9c8d17871710c61d9f34f0ba576e89af9a"
   },
   "citroen": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 805750,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 806724,
    "n": 890,
    "nome": "CITROEN",
-   "sha256": "eb4a82eac471a07dc457e2511cf33925e145e4aa2c0b14456c5526ab55d79e73"
+   "sha256": "a153bae40766d833b4788b6cf9b1774ac2f414efacc1c7881cb07ba19800fd46"
   },
   "citroenc4": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1006,11 +1006,11 @@
    "sha256": "7f53e7be760c181b04e2823c299dc9726e2d180168cccfa69222b32fe4698080"
   },
   "dodge": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 103968,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 104660,
    "n": 101,
    "nome": "Dodge",
-   "sha256": "2b17db622b541428d64cf0acef3994284b5b3296616410c4bcf2044288e30f9c"
+   "sha256": "f25554f8b4724ad039bf4b6c3d908c7cefb66c367b990bc57ca756139ee891db"
   },
   "dodgeram": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1034,11 +1034,11 @@
    "sha256": "46e625bdd11c88a7ffd9da3be9d8b26d2a68a628a78dc7092493b02be8406f85"
   },
   "ds": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 174518,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 175340,
    "n": 100,
    "nome": "DS",
-   "sha256": "a9e1a378e91315edd5337d3b2ed5fa8e2065a99accf5d8bfaafdbf07fe32d118"
+   "sha256": "bf9c07fa5b4086d034fffe09f4c46bbb5da6adff99c1e0d29b8bc489ea046b92"
   },
   "dunlop": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1195,11 +1195,11 @@
    "sha256": "40e3934aa5d754c7bdf682a1c798cbd5002e1dabeff8d232d307d6e192bf4eed"
   },
   "ferrari": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 130826,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 131648,
    "n": 158,
    "nome": "Ferrari",
-   "sha256": "2514a52618edcf11245b83760b8323480a5c5773aeb320a22af72e0d2d1b00f5"
+   "sha256": "f678bf806e23d214f8858be256d07a2f984abee66e0a8d76c0727d51128eeb5b"
   },
   "ferrarispa": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1209,11 +1209,11 @@
    "sha256": "f31f0f3c1c2b41629b706d6cfcb69eff32d51fb1fdc0520487b52b39305d9307"
   },
   "fiat": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 313707,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 314851,
    "n": 355,
    "nome": "Fiat",
-   "sha256": "f2bdeabef750ae43032fa055f8ebe0191db08def132352fc70bd1346656eeb75"
+   "sha256": "9bf8d93fc4233d0b6afd18e076295c70d71dfbad3b790b1eb8cd9b166cd4374a"
   },
   "fiat500abarth": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1272,11 +1272,11 @@
    "sha256": "3088c9c80ac9aa15a2ca5c9bf7e60c3d88d3e73c7eeb2d6fc8496c338c46374b"
   },
   "ford": {
-   "aggiornato_il": "2026-09-24T18:57:31Z",
-   "bytes": 1038265,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 1040209,
    "n": 1276,
    "nome": "Ford",
-   "sha256": "1ed88c51298bf0a400f22e0ce285818f4f399b1594ba05b3c13dbb39fbf292b2"
+   "sha256": "254916775199be4798cbb15610605c9d48c853e7adfabab642bb75592c625221"
   },
   "fruehauf": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1608,11 +1608,11 @@
    "sha256": "38a43ca77af409e159c08cda7f94d550cb175426aa415628b2770ce017606bb1"
   },
   "hyundai": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 250454,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 252035,
    "n": 233,
    "nome": "Hyundai",
-   "sha256": "40e1e33e3f64fca5d4b6f9a182bcdb7db1cc917e53f91f5be788bd092e148eab"
+   "sha256": "0ba8834eb527853894ae201812c2c4597ab99d5f75ecaf123ca0fe2c84d1d948"
   },
   "hyva": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1643,11 +1643,11 @@
    "sha256": "e9a5cefc8ccb7d3004aab1b4699559f4c1ded0f72a22519eac801288210a91f6"
   },
   "infiniti": {
-   "aggiornato_il": "2026-09-18T19:06:18Z",
-   "bytes": 39294,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 39802,
    "n": 43,
    "nome": "Infiniti",
-   "sha256": "af1b5c709b3d9e9c3f712b8e15b7f4791f04a6aea9d3bd3dad2d47906d62bc15"
+   "sha256": "cf1ed8317f1d0f0b785f051d898af2a07d221beecd082c8eb20f09af8881f2b5"
   },
   "irisbus": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1685,11 +1685,11 @@
    "sha256": "2874f2443467d856e5e71af5121830c0db5a5f8445a331e167914c27fb854595"
   },
   "jaguar": {
-   "aggiornato_il": "2026-09-23T20:24:46Z",
-   "bytes": 215571,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 216715,
    "n": 222,
    "nome": "Jaguar",
-   "sha256": "44f5bf53e40c4735da3bedab81cbcc8e1de1a65ae13ae1a5270204b9ce732d73"
+   "sha256": "d1e5a169ec0d54cd743fde267536a7d3e58e67e727a30b50cfacb3279b9ef159"
   },
   "jaguarlandroverlimited": {
    "aggiornato_il": "2026-09-23T11:58:56Z",
@@ -1713,11 +1713,11 @@
    "sha256": "646e0196986d412539852410d8baa37d92747cd4478ce5296a6dfa94de07e3eb"
   },
   "jeep": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 261641,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 263139,
    "n": 255,
    "nome": "Jeep",
-   "sha256": "f6f5c05285b38f315bbb4d007141f7c26d5940c65dfb6ed71cfe3b210d083ca7"
+   "sha256": "fec0f105eb80628731c1df8cc8aad325e650189eca35125059e4945edf169788"
   },
   "jinanqingqi": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1860,11 +1860,11 @@
    "sha256": "e8e6d844b9a7657b375211222ca131d4ac58e7c5a3e03955b70e70109f6f5d2b"
   },
   "lamborghini": {
-   "aggiornato_il": "2026-09-22T18:57:31Z",
-   "bytes": 46673,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 47155,
    "n": 48,
    "nome": "Lamborghini",
-   "sha256": "e5a47fa38ec371550c2feef70592c0adc0e55c7b231d47d8067b4206c6c13c73"
+   "sha256": "f66a1c8f845f0edd35f57085123394b38dd72b55d598bbd8585c8f465f4f469e"
   },
   "lambretta": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1881,11 +1881,11 @@
    "sha256": "757a28ad2ff04ef108af26aa581fc6f8adda39a15ae5c9d68cdf7e73bb300dfa"
   },
   "landrover": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 435361,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 439724,
    "n": 415,
    "nome": "Land Rover",
-   "sha256": "a459428fddddcf2277e6c3b4809a364ae9f43750ed95ae0a33d50f942cc58c5a"
+   "sha256": "07d9e1b1379caeb37e41eed8259847031adcc4beeea530cb391bdc034cd1a8f4"
   },
   "laverda": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1923,11 +1923,11 @@
    "sha256": "5db8f350815fa32e0c6e443d5e221442ad14f4bc25fa6e0629032e738d52794f"
   },
   "lexus": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 196999,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 197989,
    "n": 197,
    "nome": "Lexus",
-   "sha256": "0a9aac769f604d8fff708dbf0d191d8f018674250f28caf141db1327f3637ddc"
+   "sha256": "f9e1173579b71f64e6e296f4ccc697cce4b83301dbd18470ace86b970d8c25e7"
   },
   "libertyvehicletechnologies": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2105,11 +2105,11 @@
    "sha256": "1655df5a96f525008af18262bea55b373d592bc8edd95e13751eb1bdec7e4b6a"
   },
   "mazda": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 238245,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 239186,
    "n": 236,
    "nome": "Mazda",
-   "sha256": "c0512c25e85bef465e977b3988f1d91d7a4125142e4057b381533b2eeb8071c0"
+   "sha256": "ffe51db1841896e9f50f278fd44366cdaa381ea60baf51d5f4cc691daa35dc67"
   },
   "mccormicktractors": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2133,11 +2133,11 @@
    "sha256": "a34c7959816fbe53161a3e8b388aafc52102807fe0e7205a772385cf92d4e3c4"
   },
   "mercedesbenz": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 1784560,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 1788265,
    "n": 2074,
    "nome": "Mercedes-Benz",
-   "sha256": "480077ab24ee69ce92a1005ee8532324216f3563c4e2090d01c542d2c098f26b"
+   "sha256": "9dd3668c39c8a4c24e000df288c057cb8336f9a32d9f65cac6d506d6ffd6c32e"
   },
   "merida": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2217,11 +2217,11 @@
    "sha256": "b0dcae46119cda4cf1da97f726e142e78546af19162978725484e445010655f2"
   },
   "mitsubishi": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 218752,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 219611,
    "n": 237,
    "nome": "Mitsubishi",
-   "sha256": "9cad7fe62c743d947d929bacb67e58141aa8364ed228906a8580c2e202b1fdc6"
+   "sha256": "b8befdf2092ea35fb49abd68ec932c5dfe6e87bffa093d05a79b9004648b754e"
   },
   "mitsubishitruck": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2378,11 +2378,11 @@
    "sha256": "2599a4238b23f46339c016dd1549f45a958160e87135f603c2f7fc818468c9aa"
   },
   "opel": {
-   "aggiornato_il": "2026-09-24T18:57:31Z",
-   "bytes": 612818,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 615601,
    "n": 617,
    "nome": "Opel",
-   "sha256": "9a7f40e414c3acf2ae7658262ec264af1334df21a41a02bdc36d36a6c9eb269e"
+   "sha256": "2853c2462e4eec12962e155bc3a0e086bbd106d2fabc7ff297ce4b323e964ea8"
   },
   "opelcorsa": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2448,11 +2448,11 @@
    "sha256": "7b4667b2aa87e507934be601c50769bb25157b228720cde0327953281558bb2b"
   },
   "peugeot": {
-   "aggiornato_il": "2026-09-24T18:57:31Z",
-   "bytes": 882440,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 883414,
    "n": 948,
    "nome": "Peugeot",
-   "sha256": "7bd1f05719439c271d0442e9c595c54bc11383ec9e1a764996da0b5e046e4e37"
+   "sha256": "848689f4a47c1938f0f4ebccbfb96e438dcf46b96b2bca91c2a3a9d1bf7c42f8"
   },
   "peugeotcitroends": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2518,11 +2518,11 @@
    "sha256": "dd48da79f8e8ccc830b805766b4bbe686c17cc0218b17e89efb79a0a0d161f21"
   },
   "porsche": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 254161,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 260581,
    "n": 264,
    "nome": "Porsche",
-   "sha256": "4c9842e4f1719b1a875d599a40911399f1f50e2b561c31139fddc720e4e4e893"
+   "sha256": "1575620e6f25464e3c579403b4aec688cf8095a3ae4fe2c8d0c4646eaaa5994c"
   },
   "posilock": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2847,11 +2847,11 @@
    "sha256": "d90247217bea2f343ebbcb5d70a6fd3135db10faf56f5ef522b1558e2f838ab5"
   },
   "seat": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 166052,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 167022,
    "n": 184,
    "nome": "Seat",
-   "sha256": "ef8d1e96f4721c3408d2e48ad02220258cd51c203bfda1f99d830cc9e5988d1f"
+   "sha256": "77ed787aec10c3ca9388f0a974e2737e6151dddf8eaef2c21de7a32e54a62853"
   },
   "seddonatkinson": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2910,18 +2910,18 @@
    "sha256": "8b15c20e1fb55d9ce98d1b462b0ba9744580b0a5f6c796f7e092988108a6f253"
   },
   "skoda": {
-   "aggiornato_il": "2026-09-24T18:57:31Z",
-   "bytes": 137873,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 138539,
    "n": 152,
    "nome": "Skoda",
-   "sha256": "c4502880be033976f8a30f4c93f75aca0d4d552b16de81bfd4e575349e348cf6"
+   "sha256": "744e74d913bc9988e95f6fde5d14659a39d70a03ad6307eb24f15c574ac36b30"
   },
   "smart": {
-   "aggiornato_il": "2026-09-22T18:57:31Z",
-   "bytes": 20439,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 22137,
    "n": 17,
    "nome": "Smart",
-   "sha256": "563d7f292c73e6b5b4c911287ec36dd9f58d125222e3c028f180e9875327302b"
+   "sha256": "a8c065903e005de94406a384ca6b24b02bf093832ac05d24cd4b8dfb8196fbfb"
   },
   "southerntyreco": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -3148,11 +3148,11 @@
    "sha256": "e74c3b1d752aa34c397a71cfa9a05c5203cca45ddc0e2938388ef6f2fbeb6861"
   },
   "toyota": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 733805,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 738841,
    "n": 764,
    "nome": "Toyota",
-   "sha256": "d71d7f6b73f152b4ac3a33d85f407b0b4d9406e462485e0f5cdf9d026a89e12c"
+   "sha256": "51bdb1149ac4ef875b1f218f3a75d67ae15e44a706d9c3131e9887084a52799b"
   },
   "toyotalexus": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -3358,11 +3358,11 @@
    "sha256": "73535cc492f9381ea283c4dd96c5e2c36dc1a37f0499959c41467858925e4071"
   },
   "volkswagen": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 578883,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 580328,
    "n": 588,
    "nome": "VW",
-   "sha256": "0ea3d96a2ba31ca8d10a2bbdb6565a818cf3e036083967e0a86ed7a0ef8c0fb0"
+   "sha256": "838a7ec5968e78039f3293534593e15a7924b8886c76864b3a15b9c352098941"
   },
   "volkswagenvw": {
    "aggiornato_il": "2026-09-25T11:56:12Z",
@@ -3372,11 +3372,11 @@
    "sha256": "ad82de992321522f287726d1d73d5feb3bc512a543f5b4319357f028f407e621"
   },
   "volvo": {
-   "aggiornato_il": "2026-09-25T11:56:12Z",
-   "bytes": 567484,
+   "aggiornato_il": "2026-09-25T18:55:15Z",
+   "bytes": 569810,
    "n": 699,
    "nome": "Volvo",
-   "sha256": "553be5423cb2f4c4703c662a1d5bc2685afd204a0a0a4f552ca0d225dfefdf34"
+   "sha256": "3a60f24ce94c16ef5cb69f0b67586298433a8c63f1e80474ad29889f99070bd4"
   },
   "volvos40": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
