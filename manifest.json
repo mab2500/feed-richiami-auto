@@ -5,11 +5,11 @@
    "righe": 17569
   },
   "safetygate": {
-   "report": 1117,
-   "ultimo": "2026-09-25"
+   "report": 1118,
+   "ultimo": "2026-10-02"
   }
  },
- "generato_il": "2026-10-01T18:55:52Z",
+ "generato_il": "2026-10-02T07:44:15Z",
  "marche": {
   "1jeep": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -222,11 +222,11 @@
    "sha256": "95068ada81a9511982526693727d0f4c45841c3712751f9531f01b7ca5bf2d88"
   },
   "audi": {
-   "aggiornato_il": "2026-09-28T19:10:31Z",
-   "bytes": 431953,
-   "n": 431,
+   "aggiornato_il": "2026-10-02T07:44:15Z",
+   "bytes": 433128,
+   "n": 432,
    "nome": "Audi",
-   "sha256": "8722bde530e59717941f2fc5d0c748eab5091f009eec2042ba787f794ed7f54f"
+   "sha256": "6c65336c7206ca9b0f50fcbac1bbe9d51b31c9099cdc170e79d9f03d347faa1b"
   },
   "autocruiseandpioneer": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1608,11 +1608,11 @@
    "sha256": "38a43ca77af409e159c08cda7f94d550cb175426aa415628b2770ce017606bb1"
   },
   "hyundai": {
-   "aggiornato_il": "2026-09-28T12:04:35Z",
-   "bytes": 257469,
-   "n": 233,
+   "aggiornato_il": "2026-10-02T07:44:15Z",
+   "bytes": 258585,
+   "n": 234,
    "nome": "Hyundai",
-   "sha256": "1343693e5b591df166ce8ecbbf9cf4ada7bc16fd4484d0d1e181098a87ed6cb8"
+   "sha256": "c9c3812b74cc91dc9533284cd246eb40645e2ef5bf8651acab1e40672ed79708"
   },
   "hyva": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1783,11 +1783,11 @@
    "sha256": "58649f03a845d19216f5ef86312fde787279bc8ec680ef01d097213ef3da1b49"
   },
   "kia": {
-   "aggiornato_il": "2026-09-28T12:04:35Z",
-   "bytes": 288516,
-   "n": 264,
+   "aggiornato_il": "2026-10-02T07:44:15Z",
+   "bytes": 289707,
+   "n": 265,
    "nome": "Kia",
-   "sha256": "5e527920ea5d769ca5fa519fd757d0dfabe3208bab76c544223a57d335860519"
+   "sha256": "99dd82b961c324cb022fdb7931486fb8d1fc77d9a8b0cb5ce3bf57e3555fa883"
   },
   "klippan": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1881,11 +1881,11 @@
    "sha256": "757a28ad2ff04ef108af26aa581fc6f8adda39a15ae5c9d68cdf7e73bb300dfa"
   },
   "landrover": {
-   "aggiornato_il": "2026-09-28T19:10:31Z",
-   "bytes": 445851,
-   "n": 415,
+   "aggiornato_il": "2026-10-02T07:44:15Z",
+   "bytes": 448836,
+   "n": 417,
    "nome": "Land Rover",
-   "sha256": "45c9b4c09c94e55e98bb4e0ef1044d379e0d4527617b491d7adfdf5dc4b60d58"
+   "sha256": "1da7e710c6f7623a1d836378067cfe6bda129b9768f57ece8f14c8df770317be"
   },
   "laverda": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
