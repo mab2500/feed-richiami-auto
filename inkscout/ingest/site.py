@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from html.parser import HTMLParser
 from pathlib import Path
@@ -30,6 +31,53 @@ class _ImgParser(HTMLParser):
                     self.found.append(url)
 
 
+# Blocchi <script type="application/ld+json">...</script> (type opzionalmente quotato,
+# attributi in qualsiasi ordine); il contenuto viene passato a json.loads.
+_LDJSON_RE = re.compile(
+    r"<script\b[^>]*\btype\s*=\s*['\"]?application/ld\+json['\"]?[^>]*>(.*?)</script>",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _image_value_urls(val) -> list[str]:
+    """URL dal valore di una chiave `image`: stringa, lista, oggetto con `url` (o combinazioni)."""
+    out: list[str] = []
+    if isinstance(val, str):
+        out.append(val)
+    elif isinstance(val, list):
+        for v in val:
+            out.extend(_image_value_urls(v))
+    elif isinstance(val, dict):
+        u = val.get("url")
+        if isinstance(u, str):
+            out.append(u)
+    return out
+
+
+def _walk_jsonld(node, out: list[str]) -> None:
+    """Cammina il JSON raccogliendo i valori di ogni chiave `image` (gestisce anche @graph)."""
+    if isinstance(node, dict):
+        if "image" in node:
+            out.extend(_image_value_urls(node["image"]))
+        for v in node.values():
+            _walk_jsonld(v, out)
+    elif isinstance(node, list):
+        for item in node:
+            _walk_jsonld(item, out)
+
+
+def _jsonld_image_urls(html: str) -> list[str]:
+    """Estrae gli URL `image` solo dai blocchi ld+json parsabili (gli altri sono ignorati)."""
+    found: list[str] = []
+    for block in _LDJSON_RE.findall(html):
+        try:
+            data = json.loads(block)
+        except (ValueError, TypeError):
+            continue  # blocco non parsabile: ignorato in silenzio
+        _walk_jsonld(data, found)
+    return found
+
+
 def extract_image_urls(html: str, base_url: str) -> list[str]:
     """Funzione pura: estrae URL immagine da og:image, img src/srcset e JSON-LD `image`.
 
@@ -38,8 +86,7 @@ def extract_image_urls(html: str, base_url: str) -> list[str]:
     p = _ImgParser()
     p.feed(html)
     raw = list(p.found)
-    for m in re.finditer(r'"image"\s*:\s*"([^"]+)"', html):  # JSON-LD (semplice)
-        raw.append(m.group(1))
+    raw.extend(_jsonld_image_urls(html))  # JSON-LD: solo blocchi ld+json, parsati davvero
     out, seen = [], set()
     for u in raw:
         absu = urljoin(base_url, u)

@@ -21,6 +21,33 @@ def test_extract_dedup_and_absolute():
     assert urls.count("https://site.ex/img/hero.jpg") == 1  # deduplicato
 
 
+HTML_JSONLD = """
+<html><head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":"WebPage","image":["https://cdn.ex/a.jpg","https://cdn.ex/b.jpg"]},
+  {"@type":"Article","image":{"@type":"ImageObject","url":"https://cdn.ex/c.jpg"}}
+]}
+</script>
+<script type="text/javascript">var cfg = {"image":"/falso.jpg"};</script>
+</head><body>
+<p>nel body c'e' un "image":"/falso2.jpg" come testo qualsiasi</p>
+</body></html>
+"""
+
+
+def test_jsonld_array_object_and_no_false_positive():
+    urls = extract_image_urls(HTML_JSONLD, "https://site.ex/g/")
+    # (a) image come lista di stringhe dentro ld+json -> entrambe
+    assert "https://cdn.ex/a.jpg" in urls
+    assert "https://cdn.ex/b.jpg" in urls
+    # (b) image come ImageObject con chiave url -> c.jpg
+    assert "https://cdn.ex/c.jpg" in urls
+    # (c) "image" fuori dai blocchi ld+json (script JS o body) -> NON deve comparire
+    assert "https://site.ex/falso.jpg" not in urls
+    assert "https://site.ex/falso2.jpg" not in urls
+
+
 def test_fetch_emits_rawitems(tmp_path, monkeypatch):
     monkeypatch.setattr(
         base,
