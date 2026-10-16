@@ -5,11 +5,11 @@
    "righe": 17569
   },
   "safetygate": {
-   "report": 1119,
-   "ultimo": "2026-10-09"
+   "report": 1120,
+   "ultimo": "2026-10-16"
   }
  },
- "generato_il": "2026-10-15T18:48:31Z",
+ "generato_il": "2026-10-16T11:46:58Z",
  "marche": {
   "1jeep": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1881,11 +1881,11 @@
    "sha256": "757a28ad2ff04ef108af26aa581fc6f8adda39a15ae5c9d68cdf7e73bb300dfa"
   },
   "landrover": {
-   "aggiornato_il": "2026-10-02T07:44:15Z",
-   "bytes": 448836,
-   "n": 417,
+   "aggiornato_il": "2026-10-16T11:46:58Z",
+   "bytes": 450072,
+   "n": 418,
    "nome": "Land Rover",
-   "sha256": "1da7e710c6f7623a1d836378067cfe6bda129b9768f57ece8f14c8df770317be"
+   "sha256": "8cd16f1d28dae9f10603f24bc6a8216023cc30dd348e1a64ab066963b4c18802"
   },
   "laverda": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2637,11 +2637,11 @@
    "sha256": "3fbb1cea924dc205793214ddd10a6ac3850fc50c53835faaea1c75a13282afe6"
   },
   "renault": {
-   "aggiornato_il": "2026-09-28T19:10:31Z",
-   "bytes": 368605,
-   "n": 392,
+   "aggiornato_il": "2026-10-16T11:46:58Z",
+   "bytes": 369956,
+   "n": 393,
    "nome": "Renault",
-   "sha256": "c0463917142a6190e2497ff8bda3f9ae5fcb8da1110d56a4d0c39d196d960ff2"
+   "sha256": "2ad0a4148856102d1af170d1a8c1752cb09a9ec097973c022faca7943ec2585d"
   },
   "renaulttrucks": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -3078,11 +3078,11 @@
    "sha256": "7fda3d4355b5de81a621baf98a1b7fdc10e76ee01a501ed7b1f0ed37acd393bc"
   },
   "tesla": {
-   "aggiornato_il": "2026-09-27T07:51:43Z",
-   "bytes": 53035,
-   "n": 49,
+   "aggiornato_il": "2026-10-16T11:46:58Z",
+   "bytes": 54267,
+   "n": 50,
    "nome": "Tesla",
-   "sha256": "582c21c0544927c68d98f3c78f1a88ee61a4a36ccef58edd4d2dbbb98860102b"
+   "sha256": "8c7b4be5d31d32c90a461f647aba26d007e414dba755c2b5a1dca305cbd03989"
   },
   "theexplorer": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
