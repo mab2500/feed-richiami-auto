@@ -5,11 +5,11 @@
    "righe": 17569
   },
   "safetygate": {
-   "report": 1121,
-   "ultimo": "2026-10-23"
+   "report": 1122,
+   "ultimo": "2026-10-30"
   }
  },
- "generato_il": "2026-10-29T20:14:34Z",
+ "generato_il": "2026-10-30T07:55:47Z",
  "marche": {
   "1jeep": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -138,11 +138,11 @@
    "sha256": "d07cb934dd35c9f26bcb504723325c32d63d44c5795521a56f46b77fc0435574"
   },
   "alpina": {
-   "aggiornato_il": "2026-09-28T12:04:35Z",
-   "bytes": 37029,
-   "n": 26,
+   "aggiornato_il": "2026-10-30T07:55:47Z",
+   "bytes": 38145,
+   "n": 27,
    "nome": "Alpina",
-   "sha256": "3c3710c3e62f8335ab5b432ce67d12f82ed82bef11ed43f37ae43903ee138112"
+   "sha256": "79fef82eadd51caa1b1393626ff28a2b8e49ab007e06681f9452beff8526f519"
   },
   "alpine": {
    "aggiornato_il": "2026-09-22T12:03:48Z",
@@ -222,11 +222,11 @@
    "sha256": "95068ada81a9511982526693727d0f4c45841c3712751f9531f01b7ca5bf2d88"
   },
   "audi": {
-   "aggiornato_il": "2026-10-02T07:44:15Z",
-   "bytes": 433128,
-   "n": 432,
+   "aggiornato_il": "2026-10-30T07:55:47Z",
+   "bytes": 434332,
+   "n": 433,
    "nome": "Audi",
-   "sha256": "6c65336c7206ca9b0f50fcbac1bbe9d51b31c9099cdc170e79d9f03d347faa1b"
+   "sha256": "4d594210b5a6a1588a542b5adfc61e779ace3fe5b13ba160ede07bdaf20c2c6c"
   },
   "autocruiseandpioneer": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -859,11 +859,11 @@
    "sha256": "25318780b7f0035e0b57ea291099c3ca59fc620eefdd6203373c4972583b0645"
   },
   "cupra": {
-   "aggiornato_il": "2026-09-24T12:06:59Z",
-   "bytes": 24456,
-   "n": 13,
+   "aggiornato_il": "2026-10-30T07:55:47Z",
+   "bytes": 25628,
+   "n": 14,
    "nome": "Cupra",
-   "sha256": "16eac812753785a99919fd9309890081ef2e0d368269a277d8963f632c8f972d"
+   "sha256": "b67e11383e487342443704c36340dfe7c1b2e4fab88bbf2a620042f09f62e24b"
   },
   "cyclotricity": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2217,11 +2217,11 @@
    "sha256": "b0dcae46119cda4cf1da97f726e142e78546af19162978725484e445010655f2"
   },
   "mitsubishi": {
-   "aggiornato_il": "2026-09-28T04:10:10Z",
-   "bytes": 225972,
-   "n": 237,
+   "aggiornato_il": "2026-10-30T07:55:47Z",
+   "bytes": 227294,
+   "n": 238,
    "nome": "Mitsubishi",
-   "sha256": "c3047e9b967926ceec8d15ec8ab3ca6f22c10a1759958f9ebef4796c6f42c619"
+   "sha256": "2b0e5a11f71e4a3eab2c606ae1f063f75d258b761113fcf49bb95f7f3b73c831"
   },
   "mitsubishitruck": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
