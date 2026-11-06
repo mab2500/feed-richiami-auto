@@ -5,11 +5,11 @@
    "righe": 17569
   },
   "safetygate": {
-   "report": 1122,
-   "ultimo": "2026-10-30"
+   "report": 1123,
+   "ultimo": "2026-11-06"
   }
  },
- "generato_il": "2026-11-05T20:14:55Z",
+ "generato_il": "2026-11-06T12:53:33Z",
  "marche": {
   "1jeep": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -222,11 +222,11 @@
    "sha256": "95068ada81a9511982526693727d0f4c45841c3712751f9531f01b7ca5bf2d88"
   },
   "audi": {
-   "aggiornato_il": "2026-10-30T07:55:47Z",
-   "bytes": 434332,
-   "n": 433,
+   "aggiornato_il": "2026-11-06T12:53:33Z",
+   "bytes": 435623,
+   "n": 434,
    "nome": "Audi",
-   "sha256": "4d594210b5a6a1588a542b5adfc61e779ace3fe5b13ba160ede07bdaf20c2c6c"
+   "sha256": "d3e62d1e33892e92f60f81f27da7ce2a26f53865996018291bae537453586af5"
   },
   "autocruiseandpioneer": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -859,11 +859,11 @@
    "sha256": "25318780b7f0035e0b57ea291099c3ca59fc620eefdd6203373c4972583b0645"
   },
   "cupra": {
-   "aggiornato_il": "2026-10-30T07:55:47Z",
-   "bytes": 25628,
-   "n": 14,
+   "aggiornato_il": "2026-11-06T12:53:33Z",
+   "bytes": 26691,
+   "n": 15,
    "nome": "Cupra",
-   "sha256": "b67e11383e487342443704c36340dfe7c1b2e4fab88bbf2a620042f09f62e24b"
+   "sha256": "eb14330e3e932d8ac81786886457f03fa4eb31983f9f58e1ab08d0571476ae45"
   },
   "cyclotricity": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1923,11 +1923,11 @@
    "sha256": "5db8f350815fa32e0c6e443d5e221442ad14f4bc25fa6e0629032e738d52794f"
   },
   "lexus": {
-   "aggiornato_il": "2026-09-28T19:10:31Z",
-   "bytes": 200808,
-   "n": 197,
+   "aggiornato_il": "2026-11-06T12:53:33Z",
+   "bytes": 202184,
+   "n": 198,
    "nome": "Lexus",
-   "sha256": "50741dbb51996bddb9cb2cbd6a489b9d4092bfc0b3c539ffa6158515aa5b8972"
+   "sha256": "3b50245dce50e20ff9e1b1a90fbe6952f86ecb772dba2d5f3b4d3cc2761b20d4"
   },
   "libertyvehicletechnologies": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -3358,11 +3358,11 @@
    "sha256": "73535cc492f9381ea283c4dd96c5e2c36dc1a37f0499959c41467858925e4071"
   },
   "volkswagen": {
-   "aggiornato_il": "2026-09-28T19:10:31Z",
-   "bytes": 605209,
-   "n": 588,
+   "aggiornato_il": "2026-11-06T12:53:33Z",
+   "bytes": 609074,
+   "n": 591,
    "nome": "VW",
-   "sha256": "ba9f346a2a892849a252ea8efc2e51fe20c7a6b9b4f6f5059c6c81cd2897a526"
+   "sha256": "461da7e5503d302dae17f493963e3d0574b586d6a8eefbdf5ecdd29fa6f9b9d4"
   },
   "volkswagenvw": {
    "aggiornato_il": "2026-10-23T12:09:32Z",
