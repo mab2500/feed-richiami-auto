@@ -5,11 +5,11 @@
    "righe": 17569
   },
   "safetygate": {
-   "report": 1123,
-   "ultimo": "2026-11-06"
+   "report": 1124,
+   "ultimo": "2026-11-13"
   }
  },
- "generato_il": "2026-11-12T20:20:13Z",
+ "generato_il": "2026-11-13T12:59:36Z",
  "marche": {
   "1jeep": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -222,11 +222,11 @@
    "sha256": "95068ada81a9511982526693727d0f4c45841c3712751f9531f01b7ca5bf2d88"
   },
   "audi": {
-   "aggiornato_il": "2026-11-06T12:53:33Z",
-   "bytes": 435623,
-   "n": 434,
+   "aggiornato_il": "2026-11-13T12:59:36Z",
+   "bytes": 436739,
+   "n": 435,
    "nome": "Audi",
-   "sha256": "d3e62d1e33892e92f60f81f27da7ce2a26f53865996018291bae537453586af5"
+   "sha256": "9c88ddd274bda3be3dc8194f6df64fca06d20ac63242f6599c348db3013c8834"
   },
   "autocruiseandpioneer": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1272,11 +1272,11 @@
    "sha256": "3088c9c80ac9aa15a2ca5c9bf7e60c3d88d3e73c7eeb2d6fc8496c338c46374b"
   },
   "ford": {
-   "aggiornato_il": "2026-10-23T12:09:32Z",
-   "bytes": 1059424,
-   "n": 1278,
+   "aggiornato_il": "2026-11-13T12:59:36Z",
+   "bytes": 1060592,
+   "n": 1279,
    "nome": "Ford",
-   "sha256": "b841c6cf4c9cc5aa3650cffef09ebc8c3820d0086c050fc41d904b25b3f847bc"
+   "sha256": "87f54ce03f382a46ffe930c6bcc133248c7dfbeb7ef29e64b671733ab552c337"
   },
   "fruehauf": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2133,11 +2133,11 @@
    "sha256": "a34c7959816fbe53161a3e8b388aafc52102807fe0e7205a772385cf92d4e3c4"
   },
   "mercedesbenz": {
-   "aggiornato_il": "2026-09-28T19:10:31Z",
-   "bytes": 1844523,
-   "n": 2074,
+   "aggiornato_il": "2026-11-13T12:59:36Z",
+   "bytes": 1847048,
+   "n": 2076,
    "nome": "Mercedes-Benz",
-   "sha256": "574894c08dde139c22d17eba9b785f3ce4c47e124809d49c56f40ad21e6c4c90"
+   "sha256": "63d9026080fbb1bf0386077aa0384d0890ff92d0028251976510f0e8b7fa57ea"
   },
   "merida": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2910,11 +2910,11 @@
    "sha256": "8b15c20e1fb55d9ce98d1b462b0ba9744580b0a5f6c796f7e092988108a6f253"
   },
   "skoda": {
-   "aggiornato_il": "2026-09-28T19:10:31Z",
-   "bytes": 142638,
-   "n": 152,
+   "aggiornato_il": "2026-11-13T12:59:36Z",
+   "bytes": 144071,
+   "n": 153,
    "nome": "Skoda",
-   "sha256": "6b7cda2af68f6499358cb0e0dc7fa93f77126ea4f2ce87be5f92e488d0e22cd9"
+   "sha256": "c702251ff59312028b6dbe61d58b8603938a9ef9873e0f157fd4125c2a7c066b"
   },
   "smart": {
    "aggiornato_il": "2026-09-28T12:04:35Z",
