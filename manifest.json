@@ -5,11 +5,11 @@
    "righe": 17569
   },
   "safetygate": {
-   "report": 1124,
-   "ultimo": "2026-11-13"
+   "report": 1125,
+   "ultimo": "2026-11-20"
   }
  },
- "generato_il": "2026-11-19T19:47:46Z",
+ "generato_il": "2026-11-20T12:48:10Z",
  "marche": {
   "1jeep": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -1272,11 +1272,11 @@
    "sha256": "3088c9c80ac9aa15a2ca5c9bf7e60c3d88d3e73c7eeb2d6fc8496c338c46374b"
   },
   "ford": {
-   "aggiornato_il": "2026-11-13T12:59:36Z",
-   "bytes": 1060592,
-   "n": 1279,
+   "aggiornato_il": "2026-11-20T12:48:10Z",
+   "bytes": 1061756,
+   "n": 1280,
    "nome": "Ford",
-   "sha256": "87f54ce03f382a46ffe930c6bcc133248c7dfbeb7ef29e64b671733ab552c337"
+   "sha256": "d40bd0da4d417dddfe0c4940cd0aeef7f41bb1734ab265a1b70cbefce3c38f64"
   },
   "fruehauf": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
@@ -2518,11 +2518,11 @@
    "sha256": "dd48da79f8e8ccc830b805766b4bbe686c17cc0218b17e89efb79a0a0d161f21"
   },
   "porsche": {
-   "aggiornato_il": "2026-09-28T04:10:10Z",
-   "bytes": 266268,
-   "n": 264,
+   "aggiornato_il": "2026-11-20T12:48:10Z",
+   "bytes": 267443,
+   "n": 265,
    "nome": "Porsche",
-   "sha256": "a165dfa175805ba94d690c662b37c082de4fb00e7f04d3f7b7cf96ba6bcc497f"
+   "sha256": "f288ce3a4762911528650c7c321d213aa9f1237c59d3747ee18ba0f0f8f136c2"
   },
   "posilock": {
    "aggiornato_il": "2026-09-12T16:35:31Z",
